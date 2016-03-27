@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace E_AOE.Properties
+namespace E_AOR.Properties
 {
 
 

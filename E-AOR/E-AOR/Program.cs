@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace E_AOE
+namespace E_AOR
 {
     static class Program
     {

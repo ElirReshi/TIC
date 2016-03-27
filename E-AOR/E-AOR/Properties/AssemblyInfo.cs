@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("E-AOE")]
+[assembly: AssemblyTitle("E-AOR")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("E-AOE")]
+[assembly: AssemblyProduct("E-AOR")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como id. de typelib si este proyecto se expone a COM.
-[assembly: Guid("e2804b75-580c-4e0e-b04a-7c47a8a36972")]
+[assembly: Guid("f7992803-42d9-4965-b061-2e46fc3ef5cb")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
 //
