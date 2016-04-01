@@ -144,6 +144,7 @@
             // 
             // MDI
             // 
+            this.MDI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MDI.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MDI.Location = new System.Drawing.Point(20, 84);
             this.MDI.Name = "MDI";
@@ -158,8 +159,9 @@
             this.Controls.Add(this.MDI);
             this.Controls.Add(this.Main);
             this.MainMenuStrip = this.Main;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(600, 600);
             this.Name = "Dashboard";
+            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.DropShadow;
             this.Text = "Dashboard";
             this.Main.ResumeLayout(false);
             this.Main.PerformLayout();

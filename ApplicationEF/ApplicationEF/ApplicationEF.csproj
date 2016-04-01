@@ -73,10 +73,100 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FAsignatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FAsignatura.Designer.cs">
+      <DependentUpon>FAsignatura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FBlacklist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FBlacklist.Designer.cs">
+      <DependentUpon>FBlacklist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FControl.Designer.cs">
+      <DependentUpon>FControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FDashboard.Designer.cs">
+      <DependentUpon>FDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FDocente.Designer.cs">
+      <DependentUpon>FDocente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FGrupo.Designer.cs">
+      <DependentUpon>FGrupo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FHorario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FHorario.Designer.cs">
+      <DependentUpon>FHorario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FMaquina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FMaquina.Designer.cs">
+      <DependentUpon>FMaquina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FResponsable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FResponsable.Designer.cs">
+      <DependentUpon>FResponsable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FTurno.Designer.cs">
+      <DependentUpon>FTurno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FAsignatura.resx">
+      <DependentUpon>FAsignatura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FBlacklist.resx">
+      <DependentUpon>FBlacklist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FControl.resx">
+      <DependentUpon>FControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FDashboard.resx">
+      <DependentUpon>FDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FDocente.resx">
+      <DependentUpon>FDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FGrupo.resx">
+      <DependentUpon>FGrupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FHorario.resx">
+      <DependentUpon>FHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FMaquina.resx">
+      <DependentUpon>FMaquina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FResponsable.resx">
+      <DependentUpon>FResponsable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FTurno.resx">
+      <DependentUpon>FTurno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,6 +191,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
