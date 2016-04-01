@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace E_AOR.Properties
+namespace ApplicationEF.Properties
 {
 
 
