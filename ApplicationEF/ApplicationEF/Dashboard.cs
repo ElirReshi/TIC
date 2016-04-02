@@ -80,24 +80,24 @@ namespace ApplicationEF
             FormPanel(hijo);
         }
 
-        private void controlToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = Application.OpenForms.OfType<FControl>().FirstOrDefault();
-            FControl hijo = form ?? new FControl();
-            FormPanel(hijo);
-        }
-
-        private void horarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = Application.OpenForms.OfType<FHorario>().FirstOrDefault();
-            FHorario hijo = form ?? new FHorario();
-            FormPanel(hijo);
-        }
-
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Application.OpenForms.OfType<FDashboard>().FirstOrDefault();
             FDashboard hijo = form ?? new FDashboard();
+            FormPanel(hijo);
+        }
+
+        private void calendarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Application.OpenForms.OfType<FCalendario>().FirstOrDefault();
+            FCalendario hijo = form ?? new FCalendario();
+            FormPanel(hijo);
+        }
+
+        private void examenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Application.OpenForms.OfType<FExamen>().FirstOrDefault();
+            FExamen hijo = form ?? new FExamen();
             FormPanel(hijo);
         }
     }
