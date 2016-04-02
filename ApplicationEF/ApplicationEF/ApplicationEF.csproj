@@ -85,11 +85,11 @@
     <Compile Include="Formularios\FBlacklist.Designer.cs">
       <DependentUpon>FBlacklist.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FControl.cs">
+    <Compile Include="Formularios\FExamen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FControl.Designer.cs">
-      <DependentUpon>FControl.cs</DependentUpon>
+    <Compile Include="Formularios\FExamen.Designer.cs">
+      <DependentUpon>FExamen.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FDashboard.cs">
       <SubType>Form</SubType>
@@ -109,11 +109,11 @@
     <Compile Include="Formularios\FGrupo.Designer.cs">
       <DependentUpon>FGrupo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FHorario.cs">
+    <Compile Include="Formularios\FCalendario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\FHorario.Designer.cs">
-      <DependentUpon>FHorario.cs</DependentUpon>
+    <Compile Include="Formularios\FCalendario.Designer.cs">
+      <DependentUpon>FCalendario.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FMaquina.cs">
       <SubType>Form</SubType>
@@ -144,8 +144,8 @@
     <EmbeddedResource Include="Formularios\FBlacklist.resx">
       <DependentUpon>FBlacklist.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FControl.resx">
-      <DependentUpon>FControl.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\FExamen.resx">
+      <DependentUpon>FExamen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FDashboard.resx">
       <DependentUpon>FDashboard.cs</DependentUpon>
@@ -156,8 +156,8 @@
     <EmbeddedResource Include="Formularios\FGrupo.resx">
       <DependentUpon>FGrupo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FHorario.resx">
-      <DependentUpon>FHorario.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\FCalendario.resx">
+      <DependentUpon>FCalendario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FMaquina.resx">
       <DependentUpon>FMaquina.cs</DependentUpon>
@@ -191,7 +191,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Diagrama\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

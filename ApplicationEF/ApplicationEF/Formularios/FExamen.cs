@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ApplicationEF.Formularios
 {
-    public partial class FControl : Form
+    public partial class FExamen : Form
     {
-        public FControl()
+        public FExamen()
         {
             InitializeComponent();
         }

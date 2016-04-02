@@ -1,6 +1,6 @@
 ﻿namespace ApplicationEF.Formularios
 {
-    partial class FHorario
+    partial class FCalendario
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // FHorario
+            // FCalendario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "FHorario";
+            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Name = "FCalendario";
             this.Text = "FHorario";
             this.ResumeLayout(false);
 

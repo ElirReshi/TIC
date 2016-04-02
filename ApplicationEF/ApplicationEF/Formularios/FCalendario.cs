@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ApplicationEF.Formularios
 {
-    public partial class FHorario : Form
+    public partial class FCalendario : Form
     {
-        public FHorario()
+        public FCalendario()
         {
             InitializeComponent();
         }
