@@ -139,8 +139,8 @@ namespace ApplicationEF.Formularios
             {
                 using (var db = new TICEntities1())
                 {
-                    var pro = db.Turno.Where(q => q.CodTurno == tab3tbCod.Text).FirstOrDefault();
-                    db.Turno.Remove(pro);
+                    var pro = db.Responsable.Where(q => q.CodResponsable == tab3tbCod.Text).FirstOrDefault();
+                    db.Responsable.Remove(pro);
                     db.SaveChanges();
                 }
                 actualizar();

@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Grid = new MetroFramework.Controls.MetroGrid();
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
             this.panel1Agregar = new MetroFramework.Controls.MetroTabPage();
+            this.tab1cbRAM = new System.Windows.Forms.ComboBox();
+            this.tab1cbHDD = new System.Windows.Forms.ComboBox();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
@@ -49,6 +51,8 @@
             this.tab1tbID = new System.Windows.Forms.TextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.panel2Modificar = new MetroFramework.Controls.MetroTabPage();
+            this.tab2cbHDD = new System.Windows.Forms.ComboBox();
+            this.tab2cbRAM = new System.Windows.Forms.ComboBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
@@ -67,10 +71,6 @@
             this.tab3tbID = new System.Windows.Forms.TextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.tab1cbHDD = new System.Windows.Forms.ComboBox();
-            this.tab1cbRAM = new System.Windows.Forms.ComboBox();
-            this.tab2cbRAM = new System.Windows.Forms.ComboBox();
-            this.tab2cbHDD = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.TabControl.SuspendLayout();
@@ -106,23 +106,23 @@
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Grid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Grid.DefaultCellStyle = dataGridViewCellStyle14;
             this.Grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Grid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.Grid.EnableHeadersVisualStyles = false;
@@ -133,18 +133,19 @@
             this.Grid.MultiSelect = false;
             this.Grid.Name = "Grid";
             this.Grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(341, 242);
             this.Grid.TabIndex = 3;
+            this.Grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick);
             // 
             // TabControl
             // 
@@ -188,6 +189,47 @@
             this.panel1Agregar.VerticalScrollbarBarColor = true;
             this.panel1Agregar.VerticalScrollbarHighlightOnWheel = false;
             this.panel1Agregar.VerticalScrollbarSize = 10;
+            // 
+            // tab1cbRAM
+            // 
+            this.tab1cbRAM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tab1cbRAM.FormattingEnabled = true;
+            this.tab1cbRAM.Items.AddRange(new object[] {
+            "2",
+            "4",
+            "8",
+            "16",
+            "32",
+            "64",
+            "128"});
+            this.tab1cbRAM.Location = new System.Drawing.Point(6, 215);
+            this.tab1cbRAM.Name = "tab1cbRAM";
+            this.tab1cbRAM.Size = new System.Drawing.Size(210, 21);
+            this.tab1cbRAM.TabIndex = 20;
+            // 
+            // tab1cbHDD
+            // 
+            this.tab1cbHDD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tab1cbHDD.FormattingEnabled = true;
+            this.tab1cbHDD.Items.AddRange(new object[] {
+            "160",
+            "250",
+            "320",
+            "360",
+            "500",
+            "640",
+            "750",
+            "1000",
+            "1500",
+            "2000",
+            "2500",
+            "3000"});
+            this.tab1cbHDD.Location = new System.Drawing.Point(6, 309);
+            this.tab1cbHDD.Name = "tab1cbHDD";
+            this.tab1cbHDD.Size = new System.Drawing.Size(210, 21);
+            this.tab1cbHDD.TabIndex = 19;
             // 
             // metroLabel12
             // 
@@ -258,6 +300,7 @@
             this.tab1btAgregar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.tab1btAgregar.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.tab1btAgregar.UseSelectable = true;
+            this.tab1btAgregar.Click += new System.EventHandler(this.tab1btAgregar_Click);
             // 
             // metroLabel4
             // 
@@ -341,6 +384,47 @@
             this.panel2Modificar.VerticalScrollbarBarColor = true;
             this.panel2Modificar.VerticalScrollbarHighlightOnWheel = false;
             this.panel2Modificar.VerticalScrollbarSize = 10;
+            // 
+            // tab2cbHDD
+            // 
+            this.tab2cbHDD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tab2cbHDD.FormattingEnabled = true;
+            this.tab2cbHDD.Items.AddRange(new object[] {
+            "160",
+            "250",
+            "320",
+            "360",
+            "500",
+            "640",
+            "750",
+            "1000",
+            "1500",
+            "2000",
+            "2500",
+            "3000"});
+            this.tab2cbHDD.Location = new System.Drawing.Point(6, 309);
+            this.tab2cbHDD.Name = "tab2cbHDD";
+            this.tab2cbHDD.Size = new System.Drawing.Size(210, 21);
+            this.tab2cbHDD.TabIndex = 34;
+            // 
+            // tab2cbRAM
+            // 
+            this.tab2cbRAM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tab2cbRAM.FormattingEnabled = true;
+            this.tab2cbRAM.Items.AddRange(new object[] {
+            "2",
+            "4",
+            "8",
+            "16",
+            "32",
+            "64",
+            "128"});
+            this.tab2cbRAM.Location = new System.Drawing.Point(6, 215);
+            this.tab2cbRAM.Name = "tab2cbRAM";
+            this.tab2cbRAM.Size = new System.Drawing.Size(210, 21);
+            this.tab2cbRAM.TabIndex = 33;
             // 
             // metroLabel5
             // 
@@ -465,6 +549,7 @@
             this.tab2btModificar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.tab2btModificar.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.tab2btModificar.UseSelectable = true;
+            this.tab2btModificar.Click += new System.EventHandler(this.tab2btModificar_Click);
             // 
             // panel3Eliminar
             // 
@@ -498,6 +583,7 @@
             this.tab3btEliminar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.tab3btEliminar.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.tab3btEliminar.UseSelectable = true;
+            this.tab3btEliminar.Click += new System.EventHandler(this.tab3btEliminar_Click);
             // 
             // tab3tbID
             // 
@@ -532,38 +618,6 @@
             this.label1.Text = "Máquina";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tab1cbHDD
-            // 
-            this.tab1cbHDD.FormattingEnabled = true;
-            this.tab1cbHDD.Location = new System.Drawing.Point(6, 309);
-            this.tab1cbHDD.Name = "tab1cbHDD";
-            this.tab1cbHDD.Size = new System.Drawing.Size(210, 21);
-            this.tab1cbHDD.TabIndex = 19;
-            // 
-            // tab1cbRAM
-            // 
-            this.tab1cbRAM.FormattingEnabled = true;
-            this.tab1cbRAM.Location = new System.Drawing.Point(6, 215);
-            this.tab1cbRAM.Name = "tab1cbRAM";
-            this.tab1cbRAM.Size = new System.Drawing.Size(210, 21);
-            this.tab1cbRAM.TabIndex = 20;
-            // 
-            // tab2cbRAM
-            // 
-            this.tab2cbRAM.FormattingEnabled = true;
-            this.tab2cbRAM.Location = new System.Drawing.Point(6, 215);
-            this.tab2cbRAM.Name = "tab2cbRAM";
-            this.tab2cbRAM.Size = new System.Drawing.Size(210, 21);
-            this.tab2cbRAM.TabIndex = 33;
-            // 
-            // tab2cbHDD
-            // 
-            this.tab2cbHDD.FormattingEnabled = true;
-            this.tab2cbHDD.Location = new System.Drawing.Point(6, 309);
-            this.tab2cbHDD.Name = "tab2cbHDD";
-            this.tab2cbHDD.Size = new System.Drawing.Size(210, 21);
-            this.tab2cbHDD.TabIndex = 34;
-            // 
             // FMaquina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,6 +627,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FMaquina";
             this.Text = "FMaquina";
+            this.Load += new System.EventHandler(this.FMaquina_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();
