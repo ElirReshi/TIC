@@ -47,7 +47,7 @@
             this.tab2tbCod = new System.Windows.Forms.TextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.panel3Eliminar = new MetroFramework.Controls.MetroTabPage();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.tab3btEliminar = new MetroFramework.Controls.MetroTile();
             this.tab3tbCod = new System.Windows.Forms.TextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,6 +79,8 @@
             // 
             // Grid
             // 
+            this.Grid.AllowUserToAddRows = false;
+            this.Grid.AllowUserToDeleteRows = false;
             this.Grid.AllowUserToResizeRows = false;
             this.Grid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(51)))), ((int)(((byte)(63)))));
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -102,11 +104,13 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Grid.DefaultCellStyle = dataGridViewCellStyle2;
             this.Grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Grid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.Grid.EnableHeadersVisualStyles = false;
             this.Grid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.Grid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Grid.Location = new System.Drawing.Point(238, 61);
             this.Grid.Margin = new System.Windows.Forms.Padding(5);
+            this.Grid.MultiSelect = false;
             this.Grid.Name = "Grid";
             this.Grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -120,7 +124,8 @@
             this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(341, 242);
-            this.Grid.TabIndex = 0;
+            this.Grid.TabIndex = 3;
+            this.Grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick);
             // 
             // TabControl
             // 
@@ -170,6 +175,7 @@
             this.tab1btAgregar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.tab1btAgregar.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.tab1btAgregar.UseSelectable = true;
+            this.tab1btAgregar.Click += new System.EventHandler(this.tab1btAgregar_Click);
             // 
             // tab1tbAsignatura
             // 
@@ -241,6 +247,7 @@
             this.tab2btModificar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.tab2btModificar.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.tab2btModificar.UseSelectable = true;
+            this.tab2btModificar.Click += new System.EventHandler(this.tab2btModificar_Click);
             // 
             // tab2tbAsignatura
             // 
@@ -280,7 +287,7 @@
             // 
             // panel3Eliminar
             // 
-            this.panel3Eliminar.Controls.Add(this.metroTile1);
+            this.panel3Eliminar.Controls.Add(this.tab3btEliminar);
             this.panel3Eliminar.Controls.Add(this.tab3tbCod);
             this.panel3Eliminar.Controls.Add(this.metroLabel9);
             this.panel3Eliminar.HorizontalScrollbarBarColor = true;
@@ -295,21 +302,22 @@
             this.panel3Eliminar.VerticalScrollbarHighlightOnWheel = false;
             this.panel3Eliminar.VerticalScrollbarSize = 10;
             // 
-            // metroTile1
+            // tab3btEliminar
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tab3btEliminar.ActiveControl = null;
+            this.tab3btEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroTile1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroTile1.Location = new System.Drawing.Point(9, 52);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(210, 30);
-            this.metroTile1.Style = MetroFramework.MetroColorStyle.Red;
-            this.metroTile1.TabIndex = 13;
-            this.metroTile1.Text = "Eliminar";
-            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile1.UseSelectable = true;
+            this.tab3btEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tab3btEliminar.Location = new System.Drawing.Point(9, 52);
+            this.tab3btEliminar.Name = "tab3btEliminar";
+            this.tab3btEliminar.Size = new System.Drawing.Size(210, 30);
+            this.tab3btEliminar.Style = MetroFramework.MetroColorStyle.Red;
+            this.tab3btEliminar.TabIndex = 13;
+            this.tab3btEliminar.Text = "Eliminar";
+            this.tab3btEliminar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tab3btEliminar.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.tab3btEliminar.UseSelectable = true;
+            this.tab3btEliminar.Click += new System.EventHandler(this.tab3btEliminar_Click);
             // 
             // tab3tbCod
             // 
@@ -353,6 +361,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FAsignatura";
             this.Text = "FAsignatura";
+            this.Load += new System.EventHandler(this.FAsignatura_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();
@@ -370,7 +379,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private MetroFramework.Controls.MetroGrid Grid;
         private MetroFramework.Controls.MetroTabControl TabControl;
         private MetroFramework.Controls.MetroTabPage panel1Agregar;
         private MetroFramework.Controls.MetroTile tab1btAgregar;
@@ -385,9 +393,10 @@
         private System.Windows.Forms.TextBox tab2tbCod;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroTabPage panel3Eliminar;
-        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile tab3btEliminar;
         private System.Windows.Forms.TextBox tab3tbCod;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private System.Windows.Forms.Label label1;
+        private MetroFramework.Controls.MetroGrid Grid;
     }
 }

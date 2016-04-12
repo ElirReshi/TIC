@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="779a5c0b4e4e43578483000d31de0e69" Name="Diagram1">
+        <EntityTypeShape EntityType="TICModel.Apartado" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.Asignatura" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.Blacklist" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.Calendario" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.DetalleBlacklist" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.DetalleExamen" Width="1.5" PointX="7.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.Docente" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.Examen" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.Grupo" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.Leccion" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.Maquina" Width="1.5" PointX="5.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.Responsable" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.Turno" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_apartado" Width="1.5" PointX="9.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_asignatura" Width="1.5" PointX="9.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_blacklist" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_calendario" Width="1.5" PointX="9.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_detalleblacklist" Width="1.5" PointX="11.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_detalleexamen" Width="1.5" PointX="11.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_docente" Width="1.5" PointX="11.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_examen" Width="1.5" PointX="11.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_grupo" Width="1.5" PointX="11.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_leccion" Width="1.5" PointX="13.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_maquina" Width="1.5" PointX="13.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_responsable" Width="1.5" PointX="13.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TICModel.list_turno" Width="1.5" PointX="13.75" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="TICModel.FK__Apartado__CodDoc__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__Apartado__CodGru__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__Apartado__NumCal__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__Leccion__NumApar__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__Leccion__CodAsig__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__Blacklist__CodRe__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__DetalleBl__NumBl__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__Calendari__CodTu__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__DetalleBl__CodGr__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__DetalleBl__CodTu__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__DetalleEx__NumEx__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__DetalleEx__NumMa__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__Examen__CodRespo__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="TICModel.FK__Responsab__CodTu__1BFD2C07" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

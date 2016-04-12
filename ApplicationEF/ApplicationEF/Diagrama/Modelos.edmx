@@ -1,0 +1,1919 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TICModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Apartado">
+          <Key>
+            <PropertyRef Name="NumApartado" />
+          </Key>
+          <Property Name="NumApartado" Type="int" Nullable="false" />
+          <Property Name="NumCalendario" Type="int" Nullable="false" />
+          <Property Name="CodDocente" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="CodGrupo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Bloque" Type="int" Nullable="false" />
+          <Property Name="TipoBloque" Type="nvarchar(max)" />
+          <Property Name="FechaReg" Type="date" />
+        </EntityType>
+        <EntityType Name="Asignatura">
+          <Key>
+            <PropertyRef Name="CodAsignatura" />
+          </Key>
+          <Property Name="CodAsignatura" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Blacklist">
+          <Key>
+            <PropertyRef Name="NumBlacklist" />
+          </Key>
+          <Property Name="NumBlacklist" Type="int" Nullable="false" />
+          <Property Name="CodResponsable" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Causa" Type="nvarchar(max)" />
+          <Property Name="Sanción" Type="date" Nullable="false" />
+          <Property Name="Bloque" Type="int" Nullable="false" />
+          <Property Name="Vigente" Type="bit" Nullable="false" />
+          <Property Name="FechaReg" Type="date" />
+        </EntityType>
+        <EntityType Name="Calendario">
+          <Key>
+            <PropertyRef Name="NumCalendario" />
+          </Key>
+          <Property Name="NumCalendario" Type="int" Nullable="false" />
+          <Property Name="CodTurno" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="DetalleBlacklist">
+          <Key>
+            <PropertyRef Name="IdDetalleBlacklist" />
+          </Key>
+          <Property Name="IdDetalleBlacklist" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumBlacklist" Type="int" Nullable="false" />
+          <Property Name="CodGrupo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="CodTurno" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Apellido" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DetalleExamen">
+          <Key>
+            <PropertyRef Name="IdDetalleExamen" />
+          </Key>
+          <Property Name="IdDetalleExamen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumExamen" Type="int" Nullable="false" />
+          <Property Name="NumMaquina" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar(max)" />
+          <Property Name="Desperfecto" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Docente">
+          <Key>
+            <PropertyRef Name="CodDocente" />
+          </Key>
+          <Property Name="CodDocente" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="16" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Apellido" Type="nvarchar(max)" />
+          <Property Name="Celular" Type="int" />
+        </EntityType>
+        <EntityType Name="Examen">
+          <Key>
+            <PropertyRef Name="NumExamen" />
+          </Key>
+          <Property Name="NumExamen" Type="int" Nullable="false" />
+          <Property Name="CodResponsable" Type="char" MaxLength="10" />
+          <Property Name="TipoMantenimiento" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Justificacion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FechaReg" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="CodGrupo" />
+          </Key>
+          <Property Name="CodGrupo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Leccion">
+          <Key>
+            <PropertyRef Name="NumLeccion" />
+          </Key>
+          <Property Name="NumLeccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumApartado" Type="int" Nullable="false" />
+          <Property Name="CodAsignatura" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="CantHombre" Type="int" />
+          <Property Name="CantMujer" Type="int" />
+          <Property Name="FechaReg" Type="date" />
+        </EntityType>
+        <EntityType Name="Maquina">
+          <Key>
+            <PropertyRef Name="NumMaquina" />
+          </Key>
+          <Property Name="NumMaquina" Type="int" Nullable="false" />
+          <Property Name="Fabricante" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Modelo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CPU" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RAM" Type="int" Nullable="false" />
+          <Property Name="GPU" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HDD" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Responsable">
+          <Key>
+            <PropertyRef Name="CodResponsable" />
+          </Key>
+          <Property Name="CodResponsable" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="CodTurno" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="16" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Apellido" Type="nvarchar(max)" />
+          <Property Name="Celular" Type="int" />
+        </EntityType>
+        <EntityType Name="Turno">
+          <Key>
+            <PropertyRef Name="CodTurno" />
+          </Key>
+          <Property Name="CodTurno" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HoraEntrada" Type="time" Precision="7" />
+          <Property Name="HoraSalida" Type="time" Precision="7" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_apartado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_apartado">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Calendario" />
+            <PropertyRef Name="Docente" />
+            <PropertyRef Name="Grupo" />
+            <PropertyRef Name="Bloque" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Calendario" Type="int" Nullable="false" />
+          <Property Name="Docente" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Grupo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Bloque" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar(max)" />
+          <Property Name="Fecha Registro" Type="date" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_asignatura' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_asignatura">
+          <Key>
+            <PropertyRef Name="Código" />
+          </Key>
+          <Property Name="Código" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Asignatura" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_blacklist' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_blacklist">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Responsable" />
+            <PropertyRef Name="Sanción" />
+            <PropertyRef Name="Bloque" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Responsable" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Causa" Type="nvarchar(max)" />
+          <Property Name="Sanción" Type="date" Nullable="false" />
+          <Property Name="Bloque" Type="int" Nullable="false" />
+          <Property Name="Fecha Registro" Type="date" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_calendario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_calendario">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Turno" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Turno" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_detalleblacklist' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_detalleblacklist">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="BlackList" />
+            <PropertyRef Name="Grupo" />
+            <PropertyRef Name="Turno" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlackList" Type="int" Nullable="false" />
+          <Property Name="Grupo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Turno" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Apellido" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_detalleexamen' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_detalleexamen">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Examen" />
+            <PropertyRef Name="Nº Máquina" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Examen" Type="int" Nullable="false" />
+          <Property Name="Nº Máquina" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar(max)" />
+          <Property Name="Desperfecto" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_docente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_docente">
+          <Key>
+            <PropertyRef Name="Código" />
+          </Key>
+          <Property Name="Código" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Cédula" Type="nvarchar" MaxLength="16" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Apellido" Type="nvarchar(max)" />
+          <Property Name="Celular" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_examen' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_examen">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="Justificación" />
+            <PropertyRef Name="Fecha Registro" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Responsable" Type="char" MaxLength="10" />
+          <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Justificación" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Fecha Registro" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_grupo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_grupo">
+          <Key>
+            <PropertyRef Name="Código" />
+          </Key>
+          <Property Name="Código" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Grupo" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_leccion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_leccion">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Apartado" />
+            <PropertyRef Name="Asignatura" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Apartado" Type="int" Nullable="false" />
+          <Property Name="Asignatura" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Varones" Type="int" />
+          <Property Name="Mujeres" Type="int" />
+          <Property Name="Fecha Registro" Type="date" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_maquina' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_maquina">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Fábrica" />
+            <PropertyRef Name="Módelo" />
+            <PropertyRef Name="CPU" />
+            <PropertyRef Name="RAM" />
+            <PropertyRef Name="GPU" />
+            <PropertyRef Name="HDD" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Fábrica" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Módelo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CPU" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RAM" Type="int" Nullable="false" />
+          <Property Name="GPU" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HDD" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_responsable' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_responsable">
+          <Key>
+            <PropertyRef Name="Código" />
+            <PropertyRef Name="Turno" />
+          </Key>
+          <Property Name="Código" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Turno" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Cédula" Type="nvarchar" MaxLength="16" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Apellido" Type="nvarchar(max)" />
+          <Property Name="Celular" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TIC.dbo.list_turno' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="list_turno">
+          <Key>
+            <PropertyRef Name="Código" />
+            <PropertyRef Name="Turno" />
+          </Key>
+          <Property Name="Código" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Turno" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Hora Entrada" Type="time" Precision="7" />
+          <Property Name="Hora Salida" Type="time" Precision="7" />
+        </EntityType>
+        <Association Name="FK__Apartado__CodDoc__33D4B598">
+          <End Role="Docente" Type="Self.Docente" Multiplicity="1" />
+          <End Role="Apartado" Type="Self.Apartado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Docente">
+              <PropertyRef Name="CodDocente" />
+            </Principal>
+            <Dependent Role="Apartado">
+              <PropertyRef Name="CodDocente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Apartado__CodGru__34C8D9D1">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
+          <End Role="Apartado" Type="Self.Apartado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="CodGrupo" />
+            </Principal>
+            <Dependent Role="Apartado">
+              <PropertyRef Name="CodGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Apartado__NumCal__32E0915F">
+          <End Role="Calendario" Type="Self.Calendario" Multiplicity="1" />
+          <End Role="Apartado" Type="Self.Apartado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calendario">
+              <PropertyRef Name="NumCalendario" />
+            </Principal>
+            <Dependent Role="Apartado">
+              <PropertyRef Name="NumCalendario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Blacklist__CodRe__1ED998B2">
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="1" />
+          <End Role="Blacklist" Type="Self.Blacklist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Responsable">
+              <PropertyRef Name="CodResponsable" />
+            </Principal>
+            <Dependent Role="Blacklist">
+              <PropertyRef Name="CodResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calendari__CodTu__300424B4">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="1" />
+          <End Role="Calendario" Type="Self.Calendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="CodTurno" />
+            </Principal>
+            <Dependent Role="Calendario">
+              <PropertyRef Name="CodTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleBl__CodGr__24927208">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
+          <End Role="DetalleBlacklist" Type="Self.DetalleBlacklist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="CodGrupo" />
+            </Principal>
+            <Dependent Role="DetalleBlacklist">
+              <PropertyRef Name="CodGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleBl__CodTu__25869641">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="1" />
+          <End Role="DetalleBlacklist" Type="Self.DetalleBlacklist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="CodTurno" />
+            </Principal>
+            <Dependent Role="DetalleBlacklist">
+              <PropertyRef Name="CodTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleBl__NumBl__239E4DCF">
+          <End Role="Blacklist" Type="Self.Blacklist" Multiplicity="1" />
+          <End Role="DetalleBlacklist" Type="Self.DetalleBlacklist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blacklist">
+              <PropertyRef Name="NumBlacklist" />
+            </Principal>
+            <Dependent Role="DetalleBlacklist">
+              <PropertyRef Name="NumBlacklist" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleEx__NumEx__2C3393D0">
+          <End Role="Examen" Type="Self.Examen" Multiplicity="1" />
+          <End Role="DetalleExamen" Type="Self.DetalleExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examen">
+              <PropertyRef Name="NumExamen" />
+            </Principal>
+            <Dependent Role="DetalleExamen">
+              <PropertyRef Name="NumExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleEx__NumMa__2D27B809">
+          <End Role="Maquina" Type="Self.Maquina" Multiplicity="1" />
+          <End Role="DetalleExamen" Type="Self.DetalleExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maquina">
+              <PropertyRef Name="NumMaquina" />
+            </Principal>
+            <Dependent Role="DetalleExamen">
+              <PropertyRef Name="NumMaquina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Examen__CodRespo__286302EC">
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="0..1" />
+          <End Role="Examen" Type="Self.Examen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Responsable">
+              <PropertyRef Name="CodResponsable" />
+            </Principal>
+            <Dependent Role="Examen">
+              <PropertyRef Name="CodResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Leccion__CodAsig__398D8EEE">
+          <End Role="Asignatura" Type="Self.Asignatura" Multiplicity="1" />
+          <End Role="Leccion" Type="Self.Leccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignatura">
+              <PropertyRef Name="CodAsignatura" />
+            </Principal>
+            <Dependent Role="Leccion">
+              <PropertyRef Name="CodAsignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Leccion__NumApar__38996AB5">
+          <End Role="Apartado" Type="Self.Apartado" Multiplicity="1" />
+          <End Role="Leccion" Type="Self.Leccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartado">
+              <PropertyRef Name="NumApartado" />
+            </Principal>
+            <Dependent Role="Leccion">
+              <PropertyRef Name="NumApartado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Responsab__CodTu__1BFD2C07">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="1" />
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="CodTurno" />
+            </Principal>
+            <Dependent Role="Responsable">
+              <PropertyRef Name="CodTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="insert_apartado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumApartado" Type="int" Mode="In" />
+          <Parameter Name="NumCalendario" Type="int" Mode="In" />
+          <Parameter Name="CodDocente" Type="char" Mode="In" />
+          <Parameter Name="CodGrupo" Type="char" Mode="In" />
+          <Parameter Name="Bloque" Type="int" Mode="In" />
+          <Parameter Name="TipoBloque" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="insert_asignatura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodAsignatura" Type="char" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="insert_blacklist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumBlacklist" Type="int" Mode="In" />
+          <Parameter Name="CodResponsable" Type="char" Mode="In" />
+          <Parameter Name="Causa" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Sanción" Type="date" Mode="In" />
+          <Parameter Name="Bloque" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insert_calendario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumCalendario" Type="int" Mode="In" />
+          <Parameter Name="CodTurno" Type="char" Mode="In" />
+          <Parameter Name="Fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="insert_detalleblacklist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumBlacklist" Type="int" Mode="In" />
+          <Parameter Name="CodGrupo" Type="char" Mode="In" />
+          <Parameter Name="CodTurno" Type="char" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Apellido" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="insert_detalleexamen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumExamen" Type="int" Mode="In" />
+          <Parameter Name="NumMaquina" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Desperfecto" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="insert_docente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodDocente" Type="char" Mode="In" />
+          <Parameter Name="Cedula" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Apellido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Celular" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insert_examen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumExamen" Type="int" Mode="In" />
+          <Parameter Name="CodResponsable" Type="char" Mode="In" />
+          <Parameter Name="TipoMantenimiento" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Justificacion" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="insert_grupo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodGrupo" Type="char" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="insert_leccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumApartado" Type="int" Mode="In" />
+          <Parameter Name="CodAsignatura" Type="char" Mode="In" />
+          <Parameter Name="CantHombre" Type="int" Mode="In" />
+          <Parameter Name="CantMujer" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insert_maquina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumMaquina" Type="int" Mode="In" />
+          <Parameter Name="Fabricante" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Modelo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CPU" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="RAM" Type="int" Mode="In" />
+          <Parameter Name="GPU" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="HDD" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insert_responsable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodResponsable" Type="char" Mode="In" />
+          <Parameter Name="CodTurno" Type="char" Mode="In" />
+          <Parameter Name="Cedula" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Apellido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Celular" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insert_turno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodTurno" Type="char" Mode="In" />
+          <Parameter Name="Titulo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="HoraEntrada" Type="time" Mode="In" />
+          <Parameter Name="HoraSalida" Type="time" Mode="In" />
+        </Function>
+        <Function Name="modificar_apartado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumApartado" Type="int" Mode="In" />
+          <Parameter Name="NumCalendario" Type="int" Mode="In" />
+          <Parameter Name="CodDocente" Type="char" Mode="In" />
+          <Parameter Name="CodGrupo" Type="char" Mode="In" />
+          <Parameter Name="Bloque" Type="int" Mode="In" />
+          <Parameter Name="TipoBloque" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="modificar_asignatura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodAsignatura" Type="char" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="modificar_blacklist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumBlacklist" Type="int" Mode="In" />
+          <Parameter Name="CodResponsable" Type="char" Mode="In" />
+          <Parameter Name="Causa" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Sanción" Type="date" Mode="In" />
+          <Parameter Name="Bloque" Type="int" Mode="In" />
+        </Function>
+        <Function Name="modificar_calendario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumCalendario" Type="int" Mode="In" />
+          <Parameter Name="CodTurno" Type="char" Mode="In" />
+          <Parameter Name="Fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="modificar_detalleblacklist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDetalleBlacklist" Type="int" Mode="In" />
+          <Parameter Name="CodGrupo" Type="char" Mode="In" />
+          <Parameter Name="CodTurno" Type="char" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Apellido" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="modificar_detalleexamen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDetalleExamen" Type="int" Mode="In" />
+          <Parameter Name="NumExamen" Type="int" Mode="In" />
+          <Parameter Name="NumMaquina" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Desperfecto" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="modificar_docente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodDocente" Type="char" Mode="In" />
+          <Parameter Name="Cedula" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Apellido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Celular" Type="int" Mode="In" />
+        </Function>
+        <Function Name="modificar_examen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumExamen" Type="int" Mode="In" />
+          <Parameter Name="CodResponsable" Type="char" Mode="In" />
+          <Parameter Name="TipoMantenimiento" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Justificacion" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="modificar_grupo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodGrupo" Type="char" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="modificar_leccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumLeccion" Type="int" Mode="In" />
+          <Parameter Name="NumApartado" Type="int" Mode="In" />
+          <Parameter Name="CodAsignatura" Type="char" Mode="In" />
+          <Parameter Name="CantHombre" Type="int" Mode="In" />
+          <Parameter Name="CantMujer" Type="int" Mode="In" />
+        </Function>
+        <Function Name="modificar_maquina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumMaquina" Type="int" Mode="In" />
+          <Parameter Name="Fabricante" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Modelo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CPU" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="RAM" Type="int" Mode="In" />
+          <Parameter Name="GPU" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="HDD" Type="int" Mode="In" />
+        </Function>
+        <Function Name="modificar_responsable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodResponsable" Type="char" Mode="In" />
+          <Parameter Name="CodTurno" Type="char" Mode="In" />
+          <Parameter Name="Cedula" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Apellido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Celular" Type="int" Mode="In" />
+        </Function>
+        <Function Name="modificar_turno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodTurno" Type="char" Mode="In" />
+          <Parameter Name="Titulo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="HoraEntrada" Type="time" Mode="In" />
+          <Parameter Name="HoraSalida" Type="time" Mode="In" />
+        </Function>
+        <EntityContainer Name="TICModelStoreContainer">
+          <EntitySet Name="Apartado" EntityType="Self.Apartado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asignatura" EntityType="Self.Asignatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blacklist" EntityType="Self.Blacklist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calendario" EntityType="Self.Calendario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleBlacklist" EntityType="Self.DetalleBlacklist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleExamen" EntityType="Self.DetalleExamen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Docente" EntityType="Self.Docente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Examen" EntityType="Self.Examen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leccion" EntityType="Self.Leccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maquina" EntityType="Self.Maquina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Responsable" EntityType="Self.Responsable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Turno" EntityType="Self.Turno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="list_apartado" EntityType="Self.list_apartado" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_apartado].[ID] AS [ID], 
+    [list_apartado].[Calendario] AS [Calendario], 
+    [list_apartado].[Docente] AS [Docente], 
+    [list_apartado].[Grupo] AS [Grupo], 
+    [list_apartado].[Bloque] AS [Bloque], 
+    [list_apartado].[Tipo] AS [Tipo], 
+    [list_apartado].[Fecha Registro] AS [Fecha Registro]
+    FROM [dbo].[list_apartado] AS [list_apartado]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_asignatura" EntityType="Self.list_asignatura" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_asignatura].[Código] AS [Código], 
+    [list_asignatura].[Asignatura] AS [Asignatura]
+    FROM [dbo].[list_asignatura] AS [list_asignatura]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_blacklist" EntityType="Self.list_blacklist" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_blacklist].[ID] AS [ID], 
+    [list_blacklist].[Responsable] AS [Responsable], 
+    [list_blacklist].[Causa] AS [Causa], 
+    [list_blacklist].[Sanción] AS [Sanción], 
+    [list_blacklist].[Bloque] AS [Bloque], 
+    [list_blacklist].[Fecha Registro] AS [Fecha Registro]
+    FROM [dbo].[list_blacklist] AS [list_blacklist]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_calendario" EntityType="Self.list_calendario" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_calendario].[ID] AS [ID], 
+    [list_calendario].[Turno] AS [Turno], 
+    [list_calendario].[Fecha] AS [Fecha]
+    FROM [dbo].[list_calendario] AS [list_calendario]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_detalleblacklist" EntityType="Self.list_detalleblacklist" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_detalleblacklist].[ID] AS [ID], 
+    [list_detalleblacklist].[BlackList] AS [BlackList], 
+    [list_detalleblacklist].[Grupo] AS [Grupo], 
+    [list_detalleblacklist].[Turno] AS [Turno], 
+    [list_detalleblacklist].[Nombre] AS [Nombre], 
+    [list_detalleblacklist].[Apellido] AS [Apellido]
+    FROM [dbo].[list_detalleblacklist] AS [list_detalleblacklist]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_detalleexamen" EntityType="Self.list_detalleexamen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_detalleexamen].[ID] AS [ID], 
+    [list_detalleexamen].[Examen] AS [Examen], 
+    [list_detalleexamen].[Nº Máquina] AS [Nº Máquina], 
+    [list_detalleexamen].[Estado] AS [Estado], 
+    [list_detalleexamen].[Desperfecto] AS [Desperfecto]
+    FROM [dbo].[list_detalleexamen] AS [list_detalleexamen]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_docente" EntityType="Self.list_docente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_docente].[Código] AS [Código], 
+    [list_docente].[Cédula] AS [Cédula], 
+    [list_docente].[Nombre] AS [Nombre], 
+    [list_docente].[Apellido] AS [Apellido], 
+    [list_docente].[Celular] AS [Celular]
+    FROM [dbo].[list_docente] AS [list_docente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_examen" EntityType="Self.list_examen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_examen].[ID] AS [ID], 
+    [list_examen].[Responsable] AS [Responsable], 
+    [list_examen].[Tipo] AS [Tipo], 
+    [list_examen].[Justificación] AS [Justificación], 
+    [list_examen].[Fecha Registro] AS [Fecha Registro]
+    FROM [dbo].[list_examen] AS [list_examen]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_grupo" EntityType="Self.list_grupo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_grupo].[Código] AS [Código], 
+    [list_grupo].[Grupo] AS [Grupo]
+    FROM [dbo].[list_grupo] AS [list_grupo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_leccion" EntityType="Self.list_leccion" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_leccion].[ID] AS [ID], 
+    [list_leccion].[Apartado] AS [Apartado], 
+    [list_leccion].[Asignatura] AS [Asignatura], 
+    [list_leccion].[Varones] AS [Varones], 
+    [list_leccion].[Mujeres] AS [Mujeres], 
+    [list_leccion].[Fecha Registro] AS [Fecha Registro]
+    FROM [dbo].[list_leccion] AS [list_leccion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_maquina" EntityType="Self.list_maquina" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_maquina].[ID] AS [ID], 
+    [list_maquina].[Fábrica] AS [Fábrica], 
+    [list_maquina].[Módelo] AS [Módelo], 
+    [list_maquina].[CPU] AS [CPU], 
+    [list_maquina].[RAM] AS [RAM], 
+    [list_maquina].[GPU] AS [GPU], 
+    [list_maquina].[HDD] AS [HDD]
+    FROM [dbo].[list_maquina] AS [list_maquina]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_responsable" EntityType="Self.list_responsable" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_responsable].[Código] AS [Código], 
+    [list_responsable].[Turno] AS [Turno], 
+    [list_responsable].[Cédula] AS [Cédula], 
+    [list_responsable].[Nombre] AS [Nombre], 
+    [list_responsable].[Apellido] AS [Apellido], 
+    [list_responsable].[Celular] AS [Celular]
+    FROM [dbo].[list_responsable] AS [list_responsable]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="list_turno" EntityType="Self.list_turno" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [list_turno].[Código] AS [Código], 
+    [list_turno].[Turno] AS [Turno], 
+    [list_turno].[Hora Entrada] AS [Hora Entrada], 
+    [list_turno].[Hora Salida] AS [Hora Salida]
+    FROM [dbo].[list_turno] AS [list_turno]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Apartado__CodDoc__33D4B598" Association="Self.FK__Apartado__CodDoc__33D4B598">
+            <End Role="Docente" EntitySet="Docente" />
+            <End Role="Apartado" EntitySet="Apartado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Apartado__CodGru__34C8D9D1" Association="Self.FK__Apartado__CodGru__34C8D9D1">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="Apartado" EntitySet="Apartado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Apartado__NumCal__32E0915F" Association="Self.FK__Apartado__NumCal__32E0915F">
+            <End Role="Calendario" EntitySet="Calendario" />
+            <End Role="Apartado" EntitySet="Apartado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Blacklist__CodRe__1ED998B2" Association="Self.FK__Blacklist__CodRe__1ED998B2">
+            <End Role="Responsable" EntitySet="Responsable" />
+            <End Role="Blacklist" EntitySet="Blacklist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calendari__CodTu__300424B4" Association="Self.FK__Calendari__CodTu__300424B4">
+            <End Role="Turno" EntitySet="Turno" />
+            <End Role="Calendario" EntitySet="Calendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleBl__CodGr__24927208" Association="Self.FK__DetalleBl__CodGr__24927208">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="DetalleBlacklist" EntitySet="DetalleBlacklist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleBl__CodTu__25869641" Association="Self.FK__DetalleBl__CodTu__25869641">
+            <End Role="Turno" EntitySet="Turno" />
+            <End Role="DetalleBlacklist" EntitySet="DetalleBlacklist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleBl__NumBl__239E4DCF" Association="Self.FK__DetalleBl__NumBl__239E4DCF">
+            <End Role="Blacklist" EntitySet="Blacklist" />
+            <End Role="DetalleBlacklist" EntitySet="DetalleBlacklist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleEx__NumEx__2C3393D0" Association="Self.FK__DetalleEx__NumEx__2C3393D0">
+            <End Role="Examen" EntitySet="Examen" />
+            <End Role="DetalleExamen" EntitySet="DetalleExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleEx__NumMa__2D27B809" Association="Self.FK__DetalleEx__NumMa__2D27B809">
+            <End Role="Maquina" EntitySet="Maquina" />
+            <End Role="DetalleExamen" EntitySet="DetalleExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Examen__CodRespo__286302EC" Association="Self.FK__Examen__CodRespo__286302EC">
+            <End Role="Responsable" EntitySet="Responsable" />
+            <End Role="Examen" EntitySet="Examen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Leccion__CodAsig__398D8EEE" Association="Self.FK__Leccion__CodAsig__398D8EEE">
+            <End Role="Asignatura" EntitySet="Asignatura" />
+            <End Role="Leccion" EntitySet="Leccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Leccion__NumApar__38996AB5" Association="Self.FK__Leccion__NumApar__38996AB5">
+            <End Role="Apartado" EntitySet="Apartado" />
+            <End Role="Leccion" EntitySet="Leccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Responsab__CodTu__1BFD2C07" Association="Self.FK__Responsab__CodTu__1BFD2C07">
+            <End Role="Turno" EntitySet="Turno" />
+            <End Role="Responsable" EntitySet="Responsable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TICModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Apartado">
+          <Key>
+            <PropertyRef Name="NumApartado" />
+          </Key>
+          <Property Name="NumApartado" Type="Int32" Nullable="false" />
+          <Property Name="NumCalendario" Type="Int32" Nullable="false" />
+          <Property Name="CodDocente" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CodGrupo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Bloque" Type="Int32" Nullable="false" />
+          <Property Name="TipoBloque" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaReg" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Docente" Relationship="Self.FK__Apartado__CodDoc__33D4B598" FromRole="Apartado" ToRole="Docente" />
+          <NavigationProperty Name="Grupo" Relationship="Self.FK__Apartado__CodGru__34C8D9D1" FromRole="Apartado" ToRole="Grupo" />
+          <NavigationProperty Name="Calendario" Relationship="Self.FK__Apartado__NumCal__32E0915F" FromRole="Apartado" ToRole="Calendario" />
+          <NavigationProperty Name="Leccion" Relationship="Self.FK__Leccion__NumApar__38996AB5" FromRole="Apartado" ToRole="Leccion" />
+        </EntityType>
+        <EntityType Name="Asignatura">
+          <Key>
+            <PropertyRef Name="CodAsignatura" />
+          </Key>
+          <Property Name="CodAsignatura" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Leccion" Relationship="Self.FK__Leccion__CodAsig__398D8EEE" FromRole="Asignatura" ToRole="Leccion" />
+        </EntityType>
+        <EntityType Name="Blacklist">
+          <Key>
+            <PropertyRef Name="NumBlacklist" />
+          </Key>
+          <Property Name="NumBlacklist" Type="Int32" Nullable="false" />
+          <Property Name="CodResponsable" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Causa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sanción" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Bloque" Type="Int32" Nullable="false" />
+          <Property Name="Vigente" Type="Boolean" Nullable="false" />
+          <Property Name="FechaReg" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Responsable" Relationship="Self.FK__Blacklist__CodRe__1ED998B2" FromRole="Blacklist" ToRole="Responsable" />
+          <NavigationProperty Name="DetalleBlacklist" Relationship="Self.FK__DetalleBl__NumBl__239E4DCF" FromRole="Blacklist" ToRole="DetalleBlacklist" />
+        </EntityType>
+        <EntityType Name="Calendario">
+          <Key>
+            <PropertyRef Name="NumCalendario" />
+          </Key>
+          <Property Name="NumCalendario" Type="Int32" Nullable="false" />
+          <Property Name="CodTurno" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Apartado" Relationship="Self.FK__Apartado__NumCal__32E0915F" FromRole="Calendario" ToRole="Apartado" />
+          <NavigationProperty Name="Turno" Relationship="Self.FK__Calendari__CodTu__300424B4" FromRole="Calendario" ToRole="Turno" />
+        </EntityType>
+        <EntityType Name="DetalleBlacklist">
+          <Key>
+            <PropertyRef Name="IdDetalleBlacklist" />
+          </Key>
+          <Property Name="IdDetalleBlacklist" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumBlacklist" Type="Int32" Nullable="false" />
+          <Property Name="CodGrupo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CodTurno" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Blacklist" Relationship="Self.FK__DetalleBl__NumBl__239E4DCF" FromRole="DetalleBlacklist" ToRole="Blacklist" />
+          <NavigationProperty Name="Grupo" Relationship="Self.FK__DetalleBl__CodGr__24927208" FromRole="DetalleBlacklist" ToRole="Grupo" />
+          <NavigationProperty Name="Turno" Relationship="Self.FK__DetalleBl__CodTu__25869641" FromRole="DetalleBlacklist" ToRole="Turno" />
+        </EntityType>
+        <EntityType Name="DetalleExamen">
+          <Key>
+            <PropertyRef Name="IdDetalleExamen" />
+          </Key>
+          <Property Name="IdDetalleExamen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumExamen" Type="Int32" Nullable="false" />
+          <Property Name="NumMaquina" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Desperfecto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Examen" Relationship="Self.FK__DetalleEx__NumEx__2C3393D0" FromRole="DetalleExamen" ToRole="Examen" />
+          <NavigationProperty Name="Maquina" Relationship="Self.FK__DetalleEx__NumMa__2D27B809" FromRole="DetalleExamen" ToRole="Maquina" />
+        </EntityType>
+        <EntityType Name="Docente">
+          <Key>
+            <PropertyRef Name="CodDocente" />
+          </Key>
+          <Property Name="CodDocente" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Celular" Type="Int32" />
+          <NavigationProperty Name="Apartado" Relationship="Self.FK__Apartado__CodDoc__33D4B598" FromRole="Docente" ToRole="Apartado" />
+        </EntityType>
+        <EntityType Name="Examen">
+          <Key>
+            <PropertyRef Name="NumExamen" />
+          </Key>
+          <Property Name="NumExamen" Type="Int32" Nullable="false" />
+          <Property Name="CodResponsable" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="TipoMantenimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Justificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaReg" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="DetalleExamen" Relationship="Self.FK__DetalleEx__NumEx__2C3393D0" FromRole="Examen" ToRole="DetalleExamen" />
+          <NavigationProperty Name="Responsable" Relationship="Self.FK__Examen__CodRespo__286302EC" FromRole="Examen" ToRole="Responsable" />
+        </EntityType>
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="CodGrupo" />
+          </Key>
+          <Property Name="CodGrupo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Apartado" Relationship="Self.FK__Apartado__CodGru__34C8D9D1" FromRole="Grupo" ToRole="Apartado" />
+          <NavigationProperty Name="DetalleBlacklist" Relationship="Self.FK__DetalleBl__CodGr__24927208" FromRole="Grupo" ToRole="DetalleBlacklist" />
+        </EntityType>
+        <EntityType Name="Leccion">
+          <Key>
+            <PropertyRef Name="NumLeccion" />
+          </Key>
+          <Property Name="NumLeccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumApartado" Type="Int32" Nullable="false" />
+          <Property Name="CodAsignatura" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CantHombre" Type="Int32" />
+          <Property Name="CantMujer" Type="Int32" />
+          <Property Name="FechaReg" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Apartado" Relationship="Self.FK__Leccion__NumApar__38996AB5" FromRole="Leccion" ToRole="Apartado" />
+          <NavigationProperty Name="Asignatura" Relationship="Self.FK__Leccion__CodAsig__398D8EEE" FromRole="Leccion" ToRole="Asignatura" />
+        </EntityType>
+        <EntityType Name="Maquina">
+          <Key>
+            <PropertyRef Name="NumMaquina" />
+          </Key>
+          <Property Name="NumMaquina" Type="Int32" Nullable="false" />
+          <Property Name="Fabricante" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Modelo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CPU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RAM" Type="Int32" Nullable="false" />
+          <Property Name="GPU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HDD" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DetalleExamen" Relationship="Self.FK__DetalleEx__NumMa__2D27B809" FromRole="Maquina" ToRole="DetalleExamen" />
+        </EntityType>
+        <EntityType Name="Responsable">
+          <Key>
+            <PropertyRef Name="CodResponsable" />
+          </Key>
+          <Property Name="CodResponsable" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CodTurno" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Celular" Type="Int32" />
+          <NavigationProperty Name="Blacklist" Relationship="Self.FK__Blacklist__CodRe__1ED998B2" FromRole="Responsable" ToRole="Blacklist" />
+          <NavigationProperty Name="Examen" Relationship="Self.FK__Examen__CodRespo__286302EC" FromRole="Responsable" ToRole="Examen" />
+          <NavigationProperty Name="Turno" Relationship="Self.FK__Responsab__CodTu__1BFD2C07" FromRole="Responsable" ToRole="Turno" />
+        </EntityType>
+        <EntityType Name="Turno">
+          <Key>
+            <PropertyRef Name="CodTurno" />
+          </Key>
+          <Property Name="CodTurno" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoraEntrada" Type="Time" Precision="7" />
+          <Property Name="HoraSalida" Type="Time" Precision="7" />
+          <NavigationProperty Name="Calendario" Relationship="Self.FK__Calendari__CodTu__300424B4" FromRole="Turno" ToRole="Calendario" />
+          <NavigationProperty Name="DetalleBlacklist" Relationship="Self.FK__DetalleBl__CodTu__25869641" FromRole="Turno" ToRole="DetalleBlacklist" />
+          <NavigationProperty Name="Responsable" Relationship="Self.FK__Responsab__CodTu__1BFD2C07" FromRole="Turno" ToRole="Responsable" />
+        </EntityType>
+        <EntityType Name="list_apartado">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Calendario" />
+            <PropertyRef Name="Docente" />
+            <PropertyRef Name="Grupo" />
+            <PropertyRef Name="Bloque" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Calendario" Type="Int32" Nullable="false" />
+          <Property Name="Docente" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Grupo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Bloque" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha_Registro" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="list_asignatura">
+          <Key>
+            <PropertyRef Name="Código" />
+          </Key>
+          <Property Name="Código" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Asignatura" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="list_blacklist">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Responsable" />
+            <PropertyRef Name="Sanción" />
+            <PropertyRef Name="Bloque" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Responsable" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Causa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sanción" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Bloque" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="list_calendario">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Turno" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Turno" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="list_detalleblacklist">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="BlackList" />
+            <PropertyRef Name="Grupo" />
+            <PropertyRef Name="Turno" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlackList" Type="Int32" Nullable="false" />
+          <Property Name="Grupo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Turno" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="list_detalleexamen">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Examen" />
+            <PropertyRef Name="Nº_Máquina" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Examen" Type="Int32" Nullable="false" />
+          <Property Name="Nº_Máquina" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Desperfecto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="list_docente">
+          <Key>
+            <PropertyRef Name="Código" />
+          </Key>
+          <Property Name="Código" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cédula" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Celular" Type="Int32" />
+        </EntityType>
+        <EntityType Name="list_examen">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="Justificación" />
+            <PropertyRef Name="Fecha_Registro" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Responsable" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Justificación" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="list_grupo">
+          <Key>
+            <PropertyRef Name="Código" />
+          </Key>
+          <Property Name="Código" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Grupo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="list_leccion">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Apartado" />
+            <PropertyRef Name="Asignatura" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Apartado" Type="Int32" Nullable="false" />
+          <Property Name="Asignatura" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Varones" Type="Int32" />
+          <Property Name="Mujeres" Type="Int32" />
+          <Property Name="Fecha_Registro" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="list_maquina">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Fábrica" />
+            <PropertyRef Name="Módelo" />
+            <PropertyRef Name="CPU" />
+            <PropertyRef Name="RAM" />
+            <PropertyRef Name="GPU" />
+            <PropertyRef Name="HDD" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Fábrica" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Módelo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CPU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RAM" Type="Int32" Nullable="false" />
+          <Property Name="GPU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HDD" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="list_responsable">
+          <Key>
+            <PropertyRef Name="Código" />
+            <PropertyRef Name="Turno" />
+          </Key>
+          <Property Name="Código" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Turno" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cédula" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Celular" Type="Int32" />
+        </EntityType>
+        <EntityType Name="list_turno">
+          <Key>
+            <PropertyRef Name="Código" />
+            <PropertyRef Name="Turno" />
+          </Key>
+          <Property Name="Código" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Turno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hora_Entrada" Type="Time" Precision="7" />
+          <Property Name="Hora_Salida" Type="Time" Precision="7" />
+        </EntityType>
+        <Association Name="FK__Apartado__CodDoc__33D4B598">
+          <End Role="Docente" Type="Self.Docente" Multiplicity="1" />
+          <End Role="Apartado" Type="Self.Apartado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Docente">
+              <PropertyRef Name="CodDocente" />
+            </Principal>
+            <Dependent Role="Apartado">
+              <PropertyRef Name="CodDocente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Apartado__CodGru__34C8D9D1">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
+          <End Role="Apartado" Type="Self.Apartado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="CodGrupo" />
+            </Principal>
+            <Dependent Role="Apartado">
+              <PropertyRef Name="CodGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Apartado__NumCal__32E0915F">
+          <End Role="Calendario" Type="Self.Calendario" Multiplicity="1" />
+          <End Role="Apartado" Type="Self.Apartado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calendario">
+              <PropertyRef Name="NumCalendario" />
+            </Principal>
+            <Dependent Role="Apartado">
+              <PropertyRef Name="NumCalendario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Leccion__NumApar__38996AB5">
+          <End Role="Apartado" Type="Self.Apartado" Multiplicity="1" />
+          <End Role="Leccion" Type="Self.Leccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartado">
+              <PropertyRef Name="NumApartado" />
+            </Principal>
+            <Dependent Role="Leccion">
+              <PropertyRef Name="NumApartado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Leccion__CodAsig__398D8EEE">
+          <End Role="Asignatura" Type="Self.Asignatura" Multiplicity="1" />
+          <End Role="Leccion" Type="Self.Leccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignatura">
+              <PropertyRef Name="CodAsignatura" />
+            </Principal>
+            <Dependent Role="Leccion">
+              <PropertyRef Name="CodAsignatura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Blacklist__CodRe__1ED998B2">
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="1" />
+          <End Role="Blacklist" Type="Self.Blacklist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Responsable">
+              <PropertyRef Name="CodResponsable" />
+            </Principal>
+            <Dependent Role="Blacklist">
+              <PropertyRef Name="CodResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleBl__NumBl__239E4DCF">
+          <End Role="Blacklist" Type="Self.Blacklist" Multiplicity="1" />
+          <End Role="DetalleBlacklist" Type="Self.DetalleBlacklist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blacklist">
+              <PropertyRef Name="NumBlacklist" />
+            </Principal>
+            <Dependent Role="DetalleBlacklist">
+              <PropertyRef Name="NumBlacklist" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calendari__CodTu__300424B4">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="1" />
+          <End Role="Calendario" Type="Self.Calendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="CodTurno" />
+            </Principal>
+            <Dependent Role="Calendario">
+              <PropertyRef Name="CodTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleBl__CodGr__24927208">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
+          <End Role="DetalleBlacklist" Type="Self.DetalleBlacklist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="CodGrupo" />
+            </Principal>
+            <Dependent Role="DetalleBlacklist">
+              <PropertyRef Name="CodGrupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleBl__CodTu__25869641">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="1" />
+          <End Role="DetalleBlacklist" Type="Self.DetalleBlacklist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="CodTurno" />
+            </Principal>
+            <Dependent Role="DetalleBlacklist">
+              <PropertyRef Name="CodTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleEx__NumEx__2C3393D0">
+          <End Role="Examen" Type="Self.Examen" Multiplicity="1" />
+          <End Role="DetalleExamen" Type="Self.DetalleExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examen">
+              <PropertyRef Name="NumExamen" />
+            </Principal>
+            <Dependent Role="DetalleExamen">
+              <PropertyRef Name="NumExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleEx__NumMa__2D27B809">
+          <End Role="Maquina" Type="Self.Maquina" Multiplicity="1" />
+          <End Role="DetalleExamen" Type="Self.DetalleExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maquina">
+              <PropertyRef Name="NumMaquina" />
+            </Principal>
+            <Dependent Role="DetalleExamen">
+              <PropertyRef Name="NumMaquina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Examen__CodRespo__286302EC">
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="0..1" />
+          <End Role="Examen" Type="Self.Examen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Responsable">
+              <PropertyRef Name="CodResponsable" />
+            </Principal>
+            <Dependent Role="Examen">
+              <PropertyRef Name="CodResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Responsab__CodTu__1BFD2C07">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="1" />
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="CodTurno" />
+            </Principal>
+            <Dependent Role="Responsable">
+              <PropertyRef Name="CodTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TICEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Apartado" EntityType="Self.Apartado" />
+          <EntitySet Name="Asignatura" EntityType="Self.Asignatura" />
+          <EntitySet Name="Blacklist" EntityType="Self.Blacklist" />
+          <EntitySet Name="Calendario" EntityType="Self.Calendario" />
+          <EntitySet Name="DetalleBlacklist" EntityType="Self.DetalleBlacklist" />
+          <EntitySet Name="DetalleExamen" EntityType="Self.DetalleExamen" />
+          <EntitySet Name="Docente" EntityType="Self.Docente" />
+          <EntitySet Name="Examen" EntityType="Self.Examen" />
+          <EntitySet Name="Grupo" EntityType="Self.Grupo" />
+          <EntitySet Name="Leccion" EntityType="Self.Leccion" />
+          <EntitySet Name="Maquina" EntityType="Self.Maquina" />
+          <EntitySet Name="Responsable" EntityType="Self.Responsable" />
+          <EntitySet Name="Turno" EntityType="Self.Turno" />
+          <EntitySet Name="list_apartado" EntityType="Self.list_apartado" />
+          <EntitySet Name="list_asignatura" EntityType="Self.list_asignatura" />
+          <EntitySet Name="list_blacklist" EntityType="Self.list_blacklist" />
+          <EntitySet Name="list_calendario" EntityType="Self.list_calendario" />
+          <EntitySet Name="list_detalleblacklist" EntityType="Self.list_detalleblacklist" />
+          <EntitySet Name="list_detalleexamen" EntityType="Self.list_detalleexamen" />
+          <EntitySet Name="list_docente" EntityType="Self.list_docente" />
+          <EntitySet Name="list_examen" EntityType="Self.list_examen" />
+          <EntitySet Name="list_grupo" EntityType="Self.list_grupo" />
+          <EntitySet Name="list_leccion" EntityType="Self.list_leccion" />
+          <EntitySet Name="list_maquina" EntityType="Self.list_maquina" />
+          <EntitySet Name="list_responsable" EntityType="Self.list_responsable" />
+          <EntitySet Name="list_turno" EntityType="Self.list_turno" />
+          <AssociationSet Name="FK__Apartado__CodDoc__33D4B598" Association="Self.FK__Apartado__CodDoc__33D4B598">
+            <End Role="Docente" EntitySet="Docente" />
+            <End Role="Apartado" EntitySet="Apartado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Apartado__CodGru__34C8D9D1" Association="Self.FK__Apartado__CodGru__34C8D9D1">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="Apartado" EntitySet="Apartado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Apartado__NumCal__32E0915F" Association="Self.FK__Apartado__NumCal__32E0915F">
+            <End Role="Calendario" EntitySet="Calendario" />
+            <End Role="Apartado" EntitySet="Apartado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Leccion__NumApar__38996AB5" Association="Self.FK__Leccion__NumApar__38996AB5">
+            <End Role="Apartado" EntitySet="Apartado" />
+            <End Role="Leccion" EntitySet="Leccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Leccion__CodAsig__398D8EEE" Association="Self.FK__Leccion__CodAsig__398D8EEE">
+            <End Role="Asignatura" EntitySet="Asignatura" />
+            <End Role="Leccion" EntitySet="Leccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Blacklist__CodRe__1ED998B2" Association="Self.FK__Blacklist__CodRe__1ED998B2">
+            <End Role="Responsable" EntitySet="Responsable" />
+            <End Role="Blacklist" EntitySet="Blacklist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleBl__NumBl__239E4DCF" Association="Self.FK__DetalleBl__NumBl__239E4DCF">
+            <End Role="Blacklist" EntitySet="Blacklist" />
+            <End Role="DetalleBlacklist" EntitySet="DetalleBlacklist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calendari__CodTu__300424B4" Association="Self.FK__Calendari__CodTu__300424B4">
+            <End Role="Turno" EntitySet="Turno" />
+            <End Role="Calendario" EntitySet="Calendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleBl__CodGr__24927208" Association="Self.FK__DetalleBl__CodGr__24927208">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="DetalleBlacklist" EntitySet="DetalleBlacklist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleBl__CodTu__25869641" Association="Self.FK__DetalleBl__CodTu__25869641">
+            <End Role="Turno" EntitySet="Turno" />
+            <End Role="DetalleBlacklist" EntitySet="DetalleBlacklist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleEx__NumEx__2C3393D0" Association="Self.FK__DetalleEx__NumEx__2C3393D0">
+            <End Role="Examen" EntitySet="Examen" />
+            <End Role="DetalleExamen" EntitySet="DetalleExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleEx__NumMa__2D27B809" Association="Self.FK__DetalleEx__NumMa__2D27B809">
+            <End Role="Maquina" EntitySet="Maquina" />
+            <End Role="DetalleExamen" EntitySet="DetalleExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Examen__CodRespo__286302EC" Association="Self.FK__Examen__CodRespo__286302EC">
+            <End Role="Responsable" EntitySet="Responsable" />
+            <End Role="Examen" EntitySet="Examen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Responsab__CodTu__1BFD2C07" Association="Self.FK__Responsab__CodTu__1BFD2C07">
+            <End Role="Turno" EntitySet="Turno" />
+            <End Role="Responsable" EntitySet="Responsable" />
+          </AssociationSet>
+          <FunctionImport Name="insert_apartado">
+            <Parameter Name="NumApartado" Mode="In" Type="Int32" />
+            <Parameter Name="NumCalendario" Mode="In" Type="Int32" />
+            <Parameter Name="CodDocente" Mode="In" Type="String" />
+            <Parameter Name="CodGrupo" Mode="In" Type="String" />
+            <Parameter Name="Bloque" Mode="In" Type="Int32" />
+            <Parameter Name="TipoBloque" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insert_asignatura">
+            <Parameter Name="CodAsignatura" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insert_blacklist">
+            <Parameter Name="NumBlacklist" Mode="In" Type="Int32" />
+            <Parameter Name="CodResponsable" Mode="In" Type="String" />
+            <Parameter Name="Causa" Mode="In" Type="String" />
+            <Parameter Name="Sanción" Mode="In" Type="DateTime" />
+            <Parameter Name="Bloque" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insert_calendario">
+            <Parameter Name="NumCalendario" Mode="In" Type="Int32" />
+            <Parameter Name="CodTurno" Mode="In" Type="String" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="insert_detalleblacklist">
+            <Parameter Name="NumBlacklist" Mode="In" Type="Int32" />
+            <Parameter Name="CodGrupo" Mode="In" Type="String" />
+            <Parameter Name="CodTurno" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insert_detalleexamen">
+            <Parameter Name="NumExamen" Mode="In" Type="Int32" />
+            <Parameter Name="NumMaquina" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
+            <Parameter Name="Desperfecto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insert_docente">
+            <Parameter Name="CodDocente" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Celular" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insert_examen">
+            <Parameter Name="NumExamen" Mode="In" Type="Int32" />
+            <Parameter Name="CodResponsable" Mode="In" Type="String" />
+            <Parameter Name="TipoMantenimiento" Mode="In" Type="String" />
+            <Parameter Name="Justificacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insert_grupo">
+            <Parameter Name="CodGrupo" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insert_leccion">
+            <Parameter Name="NumApartado" Mode="In" Type="Int32" />
+            <Parameter Name="CodAsignatura" Mode="In" Type="String" />
+            <Parameter Name="CantHombre" Mode="In" Type="Int32" />
+            <Parameter Name="CantMujer" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insert_maquina">
+            <Parameter Name="NumMaquina" Mode="In" Type="Int32" />
+            <Parameter Name="Fabricante" Mode="In" Type="String" />
+            <Parameter Name="Modelo" Mode="In" Type="String" />
+            <Parameter Name="CPU" Mode="In" Type="String" />
+            <Parameter Name="RAM" Mode="In" Type="Int32" />
+            <Parameter Name="GPU" Mode="In" Type="String" />
+            <Parameter Name="HDD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insert_responsable">
+            <Parameter Name="CodResponsable" Mode="In" Type="String" />
+            <Parameter Name="CodTurno" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Celular" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insert_turno">
+            <Parameter Name="CodTurno" Mode="In" Type="String" />
+            <Parameter Name="Titulo" Mode="In" Type="String" />
+            <Parameter Name="HoraEntrada" Mode="In" Type="Time" />
+            <Parameter Name="HoraSalida" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_apartado">
+            <Parameter Name="NumApartado" Mode="In" Type="Int32" />
+            <Parameter Name="NumCalendario" Mode="In" Type="Int32" />
+            <Parameter Name="CodDocente" Mode="In" Type="String" />
+            <Parameter Name="CodGrupo" Mode="In" Type="String" />
+            <Parameter Name="Bloque" Mode="In" Type="Int32" />
+            <Parameter Name="TipoBloque" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_asignatura">
+            <Parameter Name="CodAsignatura" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_blacklist">
+            <Parameter Name="NumBlacklist" Mode="In" Type="Int32" />
+            <Parameter Name="CodResponsable" Mode="In" Type="String" />
+            <Parameter Name="Causa" Mode="In" Type="String" />
+            <Parameter Name="Sanción" Mode="In" Type="DateTime" />
+            <Parameter Name="Bloque" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_calendario">
+            <Parameter Name="NumCalendario" Mode="In" Type="Int32" />
+            <Parameter Name="CodTurno" Mode="In" Type="String" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_detalleblacklist">
+            <Parameter Name="IdDetalleBlacklist" Mode="In" Type="Int32" />
+            <Parameter Name="CodGrupo" Mode="In" Type="String" />
+            <Parameter Name="CodTurno" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_detalleexamen">
+            <Parameter Name="IdDetalleExamen" Mode="In" Type="Int32" />
+            <Parameter Name="NumExamen" Mode="In" Type="Int32" />
+            <Parameter Name="NumMaquina" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
+            <Parameter Name="Desperfecto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_docente">
+            <Parameter Name="CodDocente" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Celular" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_examen">
+            <Parameter Name="NumExamen" Mode="In" Type="Int32" />
+            <Parameter Name="CodResponsable" Mode="In" Type="String" />
+            <Parameter Name="TipoMantenimiento" Mode="In" Type="String" />
+            <Parameter Name="Justificacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_grupo">
+            <Parameter Name="CodGrupo" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_leccion">
+            <Parameter Name="NumLeccion" Mode="In" Type="Int32" />
+            <Parameter Name="NumApartado" Mode="In" Type="Int32" />
+            <Parameter Name="CodAsignatura" Mode="In" Type="String" />
+            <Parameter Name="CantHombre" Mode="In" Type="Int32" />
+            <Parameter Name="CantMujer" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_maquina">
+            <Parameter Name="NumMaquina" Mode="In" Type="Int32" />
+            <Parameter Name="Fabricante" Mode="In" Type="String" />
+            <Parameter Name="Modelo" Mode="In" Type="String" />
+            <Parameter Name="CPU" Mode="In" Type="String" />
+            <Parameter Name="RAM" Mode="In" Type="Int32" />
+            <Parameter Name="GPU" Mode="In" Type="String" />
+            <Parameter Name="HDD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_responsable">
+            <Parameter Name="CodResponsable" Mode="In" Type="String" />
+            <Parameter Name="CodTurno" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Celular" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="modificar_turno">
+            <Parameter Name="CodTurno" Mode="In" Type="String" />
+            <Parameter Name="Titulo" Mode="In" Type="String" />
+            <Parameter Name="HoraEntrada" Mode="In" Type="Time" />
+            <Parameter Name="HoraSalida" Mode="In" Type="Time" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TICModelStoreContainer" CdmEntityContainer="TICEntities1">
+          <EntitySetMapping Name="Apartado">
+            <EntityTypeMapping TypeName="TICModel.Apartado">
+              <MappingFragment StoreEntitySet="Apartado">
+                <ScalarProperty Name="NumApartado" ColumnName="NumApartado" />
+                <ScalarProperty Name="NumCalendario" ColumnName="NumCalendario" />
+                <ScalarProperty Name="CodDocente" ColumnName="CodDocente" />
+                <ScalarProperty Name="CodGrupo" ColumnName="CodGrupo" />
+                <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+                <ScalarProperty Name="TipoBloque" ColumnName="TipoBloque" />
+                <ScalarProperty Name="FechaReg" ColumnName="FechaReg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asignatura">
+            <EntityTypeMapping TypeName="TICModel.Asignatura">
+              <MappingFragment StoreEntitySet="Asignatura">
+                <ScalarProperty Name="CodAsignatura" ColumnName="CodAsignatura" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blacklist">
+            <EntityTypeMapping TypeName="TICModel.Blacklist">
+              <MappingFragment StoreEntitySet="Blacklist">
+                <ScalarProperty Name="NumBlacklist" ColumnName="NumBlacklist" />
+                <ScalarProperty Name="CodResponsable" ColumnName="CodResponsable" />
+                <ScalarProperty Name="Causa" ColumnName="Causa" />
+                <ScalarProperty Name="Sanción" ColumnName="Sanción" />
+                <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+                <ScalarProperty Name="Vigente" ColumnName="Vigente" />
+                <ScalarProperty Name="FechaReg" ColumnName="FechaReg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calendario">
+            <EntityTypeMapping TypeName="TICModel.Calendario">
+              <MappingFragment StoreEntitySet="Calendario">
+                <ScalarProperty Name="NumCalendario" ColumnName="NumCalendario" />
+                <ScalarProperty Name="CodTurno" ColumnName="CodTurno" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleBlacklist">
+            <EntityTypeMapping TypeName="TICModel.DetalleBlacklist">
+              <MappingFragment StoreEntitySet="DetalleBlacklist">
+                <ScalarProperty Name="IdDetalleBlacklist" ColumnName="IdDetalleBlacklist" />
+                <ScalarProperty Name="NumBlacklist" ColumnName="NumBlacklist" />
+                <ScalarProperty Name="CodGrupo" ColumnName="CodGrupo" />
+                <ScalarProperty Name="CodTurno" ColumnName="CodTurno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleExamen">
+            <EntityTypeMapping TypeName="TICModel.DetalleExamen">
+              <MappingFragment StoreEntitySet="DetalleExamen">
+                <ScalarProperty Name="IdDetalleExamen" ColumnName="IdDetalleExamen" />
+                <ScalarProperty Name="NumExamen" ColumnName="NumExamen" />
+                <ScalarProperty Name="NumMaquina" ColumnName="NumMaquina" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Desperfecto" ColumnName="Desperfecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Docente">
+            <EntityTypeMapping TypeName="TICModel.Docente">
+              <MappingFragment StoreEntitySet="Docente">
+                <ScalarProperty Name="CodDocente" ColumnName="CodDocente" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Examen">
+            <EntityTypeMapping TypeName="TICModel.Examen">
+              <MappingFragment StoreEntitySet="Examen">
+                <ScalarProperty Name="NumExamen" ColumnName="NumExamen" />
+                <ScalarProperty Name="CodResponsable" ColumnName="CodResponsable" />
+                <ScalarProperty Name="TipoMantenimiento" ColumnName="TipoMantenimiento" />
+                <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+                <ScalarProperty Name="FechaReg" ColumnName="FechaReg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupo">
+            <EntityTypeMapping TypeName="TICModel.Grupo">
+              <MappingFragment StoreEntitySet="Grupo">
+                <ScalarProperty Name="CodGrupo" ColumnName="CodGrupo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leccion">
+            <EntityTypeMapping TypeName="TICModel.Leccion">
+              <MappingFragment StoreEntitySet="Leccion">
+                <ScalarProperty Name="NumLeccion" ColumnName="NumLeccion" />
+                <ScalarProperty Name="NumApartado" ColumnName="NumApartado" />
+                <ScalarProperty Name="CodAsignatura" ColumnName="CodAsignatura" />
+                <ScalarProperty Name="CantHombre" ColumnName="CantHombre" />
+                <ScalarProperty Name="CantMujer" ColumnName="CantMujer" />
+                <ScalarProperty Name="FechaReg" ColumnName="FechaReg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maquina">
+            <EntityTypeMapping TypeName="TICModel.Maquina">
+              <MappingFragment StoreEntitySet="Maquina">
+                <ScalarProperty Name="NumMaquina" ColumnName="NumMaquina" />
+                <ScalarProperty Name="Fabricante" ColumnName="Fabricante" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="GPU" ColumnName="GPU" />
+                <ScalarProperty Name="HDD" ColumnName="HDD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Responsable">
+            <EntityTypeMapping TypeName="TICModel.Responsable">
+              <MappingFragment StoreEntitySet="Responsable">
+                <ScalarProperty Name="CodResponsable" ColumnName="CodResponsable" />
+                <ScalarProperty Name="CodTurno" ColumnName="CodTurno" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Turno">
+            <EntityTypeMapping TypeName="TICModel.Turno">
+              <MappingFragment StoreEntitySet="Turno">
+                <ScalarProperty Name="CodTurno" ColumnName="CodTurno" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="HoraEntrada" ColumnName="HoraEntrada" />
+                <ScalarProperty Name="HoraSalida" ColumnName="HoraSalida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_apartado">
+            <EntityTypeMapping TypeName="TICModel.list_apartado">
+              <MappingFragment StoreEntitySet="list_apartado">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Calendario" ColumnName="Calendario" />
+                <ScalarProperty Name="Docente" ColumnName="Docente" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_asignatura">
+            <EntityTypeMapping TypeName="TICModel.list_asignatura">
+              <MappingFragment StoreEntitySet="list_asignatura">
+                <ScalarProperty Name="Código" ColumnName="Código" />
+                <ScalarProperty Name="Asignatura" ColumnName="Asignatura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_blacklist">
+            <EntityTypeMapping TypeName="TICModel.list_blacklist">
+              <MappingFragment StoreEntitySet="list_blacklist">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="Causa" ColumnName="Causa" />
+                <ScalarProperty Name="Sanción" ColumnName="Sanción" />
+                <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_calendario">
+            <EntityTypeMapping TypeName="TICModel.list_calendario">
+              <MappingFragment StoreEntitySet="list_calendario">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Turno" ColumnName="Turno" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_detalleblacklist">
+            <EntityTypeMapping TypeName="TICModel.list_detalleblacklist">
+              <MappingFragment StoreEntitySet="list_detalleblacklist">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BlackList" ColumnName="BlackList" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="Turno" ColumnName="Turno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_detalleexamen">
+            <EntityTypeMapping TypeName="TICModel.list_detalleexamen">
+              <MappingFragment StoreEntitySet="list_detalleexamen">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Examen" ColumnName="Examen" />
+                <ScalarProperty Name="Nº_Máquina" ColumnName="Nº Máquina" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Desperfecto" ColumnName="Desperfecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_docente">
+            <EntityTypeMapping TypeName="TICModel.list_docente">
+              <MappingFragment StoreEntitySet="list_docente">
+                <ScalarProperty Name="Código" ColumnName="Código" />
+                <ScalarProperty Name="Cédula" ColumnName="Cédula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_examen">
+            <EntityTypeMapping TypeName="TICModel.list_examen">
+              <MappingFragment StoreEntitySet="list_examen">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Justificación" ColumnName="Justificación" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_grupo">
+            <EntityTypeMapping TypeName="TICModel.list_grupo">
+              <MappingFragment StoreEntitySet="list_grupo">
+                <ScalarProperty Name="Código" ColumnName="Código" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_leccion">
+            <EntityTypeMapping TypeName="TICModel.list_leccion">
+              <MappingFragment StoreEntitySet="list_leccion">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Apartado" ColumnName="Apartado" />
+                <ScalarProperty Name="Asignatura" ColumnName="Asignatura" />
+                <ScalarProperty Name="Varones" ColumnName="Varones" />
+                <ScalarProperty Name="Mujeres" ColumnName="Mujeres" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_maquina">
+            <EntityTypeMapping TypeName="TICModel.list_maquina">
+              <MappingFragment StoreEntitySet="list_maquina">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Fábrica" ColumnName="Fábrica" />
+                <ScalarProperty Name="Módelo" ColumnName="Módelo" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="GPU" ColumnName="GPU" />
+                <ScalarProperty Name="HDD" ColumnName="HDD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_responsable">
+            <EntityTypeMapping TypeName="TICModel.list_responsable">
+              <MappingFragment StoreEntitySet="list_responsable">
+                <ScalarProperty Name="Código" ColumnName="Código" />
+                <ScalarProperty Name="Turno" ColumnName="Turno" />
+                <ScalarProperty Name="Cédula" ColumnName="Cédula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="list_turno">
+            <EntityTypeMapping TypeName="TICModel.list_turno">
+              <MappingFragment StoreEntitySet="list_turno">
+                <ScalarProperty Name="Código" ColumnName="Código" />
+                <ScalarProperty Name="Turno" ColumnName="Turno" />
+                <ScalarProperty Name="Hora_Entrada" ColumnName="Hora Entrada" />
+                <ScalarProperty Name="Hora_Salida" ColumnName="Hora Salida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="insert_apartado" FunctionName="TICModel.Store.insert_apartado" />
+          <FunctionImportMapping FunctionImportName="insert_asignatura" FunctionName="TICModel.Store.insert_asignatura" />
+          <FunctionImportMapping FunctionImportName="insert_blacklist" FunctionName="TICModel.Store.insert_blacklist" />
+          <FunctionImportMapping FunctionImportName="insert_calendario" FunctionName="TICModel.Store.insert_calendario" />
+          <FunctionImportMapping FunctionImportName="insert_detalleblacklist" FunctionName="TICModel.Store.insert_detalleblacklist" />
+          <FunctionImportMapping FunctionImportName="insert_detalleexamen" FunctionName="TICModel.Store.insert_detalleexamen" />
+          <FunctionImportMapping FunctionImportName="insert_docente" FunctionName="TICModel.Store.insert_docente" />
+          <FunctionImportMapping FunctionImportName="insert_examen" FunctionName="TICModel.Store.insert_examen" />
+          <FunctionImportMapping FunctionImportName="insert_grupo" FunctionName="TICModel.Store.insert_grupo" />
+          <FunctionImportMapping FunctionImportName="insert_leccion" FunctionName="TICModel.Store.insert_leccion" />
+          <FunctionImportMapping FunctionImportName="insert_maquina" FunctionName="TICModel.Store.insert_maquina" />
+          <FunctionImportMapping FunctionImportName="insert_responsable" FunctionName="TICModel.Store.insert_responsable" />
+          <FunctionImportMapping FunctionImportName="insert_turno" FunctionName="TICModel.Store.insert_turno" />
+          <FunctionImportMapping FunctionImportName="modificar_apartado" FunctionName="TICModel.Store.modificar_apartado" />
+          <FunctionImportMapping FunctionImportName="modificar_asignatura" FunctionName="TICModel.Store.modificar_asignatura" />
+          <FunctionImportMapping FunctionImportName="modificar_blacklist" FunctionName="TICModel.Store.modificar_blacklist" />
+          <FunctionImportMapping FunctionImportName="modificar_calendario" FunctionName="TICModel.Store.modificar_calendario" />
+          <FunctionImportMapping FunctionImportName="modificar_detalleblacklist" FunctionName="TICModel.Store.modificar_detalleblacklist" />
+          <FunctionImportMapping FunctionImportName="modificar_detalleexamen" FunctionName="TICModel.Store.modificar_detalleexamen" />
+          <FunctionImportMapping FunctionImportName="modificar_docente" FunctionName="TICModel.Store.modificar_docente" />
+          <FunctionImportMapping FunctionImportName="modificar_examen" FunctionName="TICModel.Store.modificar_examen" />
+          <FunctionImportMapping FunctionImportName="modificar_grupo" FunctionName="TICModel.Store.modificar_grupo" />
+          <FunctionImportMapping FunctionImportName="modificar_leccion" FunctionName="TICModel.Store.modificar_leccion" />
+          <FunctionImportMapping FunctionImportName="modificar_maquina" FunctionName="TICModel.Store.modificar_maquina" />
+          <FunctionImportMapping FunctionImportName="modificar_responsable" FunctionName="TICModel.Store.modificar_responsable" />
+          <FunctionImportMapping FunctionImportName="modificar_turno" FunctionName="TICModel.Store.modificar_turno" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

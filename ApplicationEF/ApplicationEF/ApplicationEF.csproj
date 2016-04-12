@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ApplicationEF</RootNamespace>
     <AssemblyName>ApplicationEF</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,6 +57,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,6 +75,99 @@
     </Compile>
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Apartado.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Asignatura.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Blacklist.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Calendario.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\DetalleBlacklist.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\DetalleExamen.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Docente.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Examen.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Grupo.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Leccion.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_apartado.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_asignatura.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_blacklist.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_calendario.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_detalleblacklist.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_detalleexamen.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_docente.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_examen.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_grupo.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_leccion.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_maquina.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_responsable.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\list_turno.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Maquina.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Modelos.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelos.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Modelos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Modelos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelos.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Responsable.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagrama\Turno.cs">
+      <DependentUpon>Modelos.tt</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FAsignatura.cs">
       <SubType>Form</SubType>
@@ -176,7 +272,15 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EntityDeploy Include="Diagrama\Modelos.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Modelos.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Diagrama\Modelos.edmx.diagram">
+      <DependentUpon>Modelos.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -192,7 +296,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Diagrama\" />
+    <Content Include="Diagrama\Modelos.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modelos.edmx</DependentUpon>
+      <LastGenOutput>Modelos.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Diagrama\Modelos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modelos.edmx</DependentUpon>
+      <LastGenOutput>Modelos.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -35,10 +35,12 @@
             this.Grid = new MetroFramework.Controls.MetroGrid();
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
             this.panel1Agregar = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.tab1tbModelo = new System.Windows.Forms.TextBox();
             this.tab1tbCPU = new System.Windows.Forms.TextBox();
             this.tab1tbGPU = new System.Windows.Forms.TextBox();
-            this.tab1tbRAM = new System.Windows.Forms.TextBox();
             this.tab1btAgregar = new MetroFramework.Controls.MetroTile();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -47,30 +49,28 @@
             this.tab1tbID = new System.Windows.Forms.TextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.panel2Modificar = new MetroFramework.Controls.MetroTabPage();
-            this.tab2btModificar = new MetroFramework.Controls.MetroTile();
-            this.panel3Eliminar = new MetroFramework.Controls.MetroTabPage();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.tab3tbID = new System.Windows.Forms.TextBox();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
-            this.tab1tbHDD = new System.Windows.Forms.TextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.tab2tbHDD = new System.Windows.Forms.TextBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.tab2tbModelo = new System.Windows.Forms.TextBox();
             this.tab2tbCPU = new System.Windows.Forms.TextBox();
             this.tab2tbGPU = new System.Windows.Forms.TextBox();
-            this.tab2tbRAM = new System.Windows.Forms.TextBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.tab2tbFabricante = new System.Windows.Forms.TextBox();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.tab2tbID = new System.Windows.Forms.TextBox();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.tab2btModificar = new MetroFramework.Controls.MetroTile();
+            this.panel3Eliminar = new MetroFramework.Controls.MetroTabPage();
+            this.tab3btEliminar = new MetroFramework.Controls.MetroTile();
+            this.tab3tbID = new System.Windows.Forms.TextBox();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tab1cbHDD = new System.Windows.Forms.ComboBox();
+            this.tab1cbRAM = new System.Windows.Forms.ComboBox();
+            this.tab2cbRAM = new System.Windows.Forms.ComboBox();
+            this.tab2cbHDD = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.TabControl.SuspendLayout();
@@ -99,6 +99,8 @@
             // 
             // Grid
             // 
+            this.Grid.AllowUserToAddRows = false;
+            this.Grid.AllowUserToDeleteRows = false;
             this.Grid.AllowUserToResizeRows = false;
             this.Grid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(51)))), ((int)(((byte)(63)))));
             this.Grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -122,11 +124,13 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Grid.DefaultCellStyle = dataGridViewCellStyle5;
             this.Grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Grid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.Grid.EnableHeadersVisualStyles = false;
             this.Grid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.Grid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Grid.Location = new System.Drawing.Point(238, 61);
             this.Grid.Margin = new System.Windows.Forms.Padding(5);
+            this.Grid.MultiSelect = false;
             this.Grid.Name = "Grid";
             this.Grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -140,7 +144,7 @@
             this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Grid.Size = new System.Drawing.Size(341, 242);
-            this.Grid.TabIndex = 0;
+            this.Grid.TabIndex = 3;
             // 
             // TabControl
             // 
@@ -151,21 +155,21 @@
             this.TabControl.Location = new System.Drawing.Point(3, 59);
             this.TabControl.Name = "TabControl";
             this.tableLayoutPanel1.SetRowSpan(this.TabControl, 2);
-            this.TabControl.SelectedIndex = 2;
+            this.TabControl.SelectedIndex = 1;
             this.TabControl.Size = new System.Drawing.Size(227, 499);
             this.TabControl.TabIndex = 1;
             this.TabControl.UseSelectable = true;
             // 
             // panel1Agregar
             // 
+            this.panel1Agregar.Controls.Add(this.tab1cbRAM);
+            this.panel1Agregar.Controls.Add(this.tab1cbHDD);
             this.panel1Agregar.Controls.Add(this.metroLabel12);
-            this.panel1Agregar.Controls.Add(this.tab1tbHDD);
             this.panel1Agregar.Controls.Add(this.metroLabel11);
             this.panel1Agregar.Controls.Add(this.metroLabel10);
             this.panel1Agregar.Controls.Add(this.tab1tbModelo);
             this.panel1Agregar.Controls.Add(this.tab1tbCPU);
             this.panel1Agregar.Controls.Add(this.tab1tbGPU);
-            this.panel1Agregar.Controls.Add(this.tab1tbRAM);
             this.panel1Agregar.Controls.Add(this.tab1btAgregar);
             this.panel1Agregar.Controls.Add(this.metroLabel4);
             this.panel1Agregar.Controls.Add(this.metroLabel3);
@@ -184,6 +188,33 @@
             this.panel1Agregar.VerticalScrollbarBarColor = true;
             this.panel1Agregar.VerticalScrollbarHighlightOnWheel = false;
             this.panel1Agregar.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(6, 286);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(65, 19);
+            this.metroLabel12.TabIndex = 18;
+            this.metroLabel12.Text = "HDD (GB)";
+            // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Location = new System.Drawing.Point(6, 192);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(67, 19);
+            this.metroLabel11.TabIndex = 16;
+            this.metroLabel11.Text = "RAM (GB)";
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.Location = new System.Drawing.Point(6, 239);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(35, 19);
+            this.metroLabel10.TabIndex = 15;
+            this.metroLabel10.Text = "GPU";
             // 
             // tab1tbModelo
             // 
@@ -211,15 +242,6 @@
             this.tab1tbGPU.Name = "tab1tbGPU";
             this.tab1tbGPU.Size = new System.Drawing.Size(210, 20);
             this.tab1tbGPU.TabIndex = 12;
-            // 
-            // tab1tbRAM
-            // 
-            this.tab1tbRAM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tab1tbRAM.Location = new System.Drawing.Point(6, 215);
-            this.tab1tbRAM.Name = "tab1tbRAM";
-            this.tab1tbRAM.Size = new System.Drawing.Size(210, 20);
-            this.tab1tbRAM.TabIndex = 11;
             // 
             // tab1btAgregar
             // 
@@ -293,14 +315,14 @@
             // 
             // panel2Modificar
             // 
+            this.panel2Modificar.Controls.Add(this.tab2cbHDD);
+            this.panel2Modificar.Controls.Add(this.tab2cbRAM);
             this.panel2Modificar.Controls.Add(this.metroLabel5);
-            this.panel2Modificar.Controls.Add(this.tab2tbHDD);
             this.panel2Modificar.Controls.Add(this.metroLabel6);
             this.panel2Modificar.Controls.Add(this.metroLabel7);
             this.panel2Modificar.Controls.Add(this.tab2tbModelo);
             this.panel2Modificar.Controls.Add(this.tab2tbCPU);
             this.panel2Modificar.Controls.Add(this.tab2tbGPU);
-            this.panel2Modificar.Controls.Add(this.tab2tbRAM);
             this.panel2Modificar.Controls.Add(this.metroLabel8);
             this.panel2Modificar.Controls.Add(this.metroLabel13);
             this.panel2Modificar.Controls.Add(this.tab2tbFabricante);
@@ -320,150 +342,23 @@
             this.panel2Modificar.VerticalScrollbarHighlightOnWheel = false;
             this.panel2Modificar.VerticalScrollbarSize = 10;
             // 
-            // tab2btModificar
-            // 
-            this.tab2btModificar.ActiveControl = null;
-            this.tab2btModificar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tab2btModificar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tab2btModificar.Location = new System.Drawing.Point(6, 333);
-            this.tab2btModificar.Name = "tab2btModificar";
-            this.tab2btModificar.Size = new System.Drawing.Size(210, 30);
-            this.tab2btModificar.Style = MetroFramework.MetroColorStyle.Green;
-            this.tab2btModificar.TabIndex = 11;
-            this.tab2btModificar.Text = "Modificar";
-            this.tab2btModificar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tab2btModificar.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.tab2btModificar.UseSelectable = true;
-            // 
-            // panel3Eliminar
-            // 
-            this.panel3Eliminar.Controls.Add(this.metroTile1);
-            this.panel3Eliminar.Controls.Add(this.tab3tbID);
-            this.panel3Eliminar.Controls.Add(this.metroLabel9);
-            this.panel3Eliminar.HorizontalScrollbarBarColor = true;
-            this.panel3Eliminar.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel3Eliminar.HorizontalScrollbarSize = 10;
-            this.panel3Eliminar.Location = new System.Drawing.Point(4, 38);
-            this.panel3Eliminar.Name = "panel3Eliminar";
-            this.panel3Eliminar.Size = new System.Drawing.Size(219, 457);
-            this.panel3Eliminar.TabIndex = 2;
-            this.panel3Eliminar.Text = "Eliminar";
-            this.panel3Eliminar.VerticalScrollbarBarColor = true;
-            this.panel3Eliminar.VerticalScrollbarHighlightOnWheel = false;
-            this.panel3Eliminar.VerticalScrollbarSize = 10;
-            // 
-            // metroTile1
-            // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroTile1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroTile1.Location = new System.Drawing.Point(9, 52);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(210, 30);
-            this.metroTile1.Style = MetroFramework.MetroColorStyle.Red;
-            this.metroTile1.TabIndex = 13;
-            this.metroTile1.Text = "Eliminar";
-            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile1.UseSelectable = true;
-            // 
-            // tab3tbID
-            // 
-            this.tab3tbID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tab3tbID.Location = new System.Drawing.Point(6, 26);
-            this.tab3tbID.Name = "tab3tbID";
-            this.tab3tbID.Size = new System.Drawing.Size(210, 20);
-            this.tab3tbID.TabIndex = 12;
-            // 
-            // metroLabel9
-            // 
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(6, 4);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(21, 19);
-            this.metroLabel9.TabIndex = 2;
-            this.metroLabel9.Text = "ID";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(578, 56);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Máquina";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // metroLabel10
-            // 
-            this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(6, 239);
-            this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(35, 19);
-            this.metroLabel10.TabIndex = 15;
-            this.metroLabel10.Text = "GPU";
-            // 
-            // metroLabel11
-            // 
-            this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(6, 192);
-            this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(38, 19);
-            this.metroLabel11.TabIndex = 16;
-            this.metroLabel11.Text = "RAM";
-            // 
-            // metroLabel12
-            // 
-            this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(6, 286);
-            this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(36, 19);
-            this.metroLabel12.TabIndex = 18;
-            this.metroLabel12.Text = "HDD";
-            // 
-            // tab1tbHDD
-            // 
-            this.tab1tbHDD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tab1tbHDD.Location = new System.Drawing.Point(6, 309);
-            this.tab1tbHDD.Name = "tab1tbHDD";
-            this.tab1tbHDD.Size = new System.Drawing.Size(210, 20);
-            this.tab1tbHDD.TabIndex = 17;
-            // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.Location = new System.Drawing.Point(6, 286);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(36, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(65, 19);
             this.metroLabel5.TabIndex = 32;
-            this.metroLabel5.Text = "HDD";
-            // 
-            // tab2tbHDD
-            // 
-            this.tab2tbHDD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tab2tbHDD.Location = new System.Drawing.Point(6, 309);
-            this.tab2tbHDD.Name = "tab2tbHDD";
-            this.tab2tbHDD.Size = new System.Drawing.Size(210, 20);
-            this.tab2tbHDD.TabIndex = 31;
+            this.metroLabel5.Text = "HDD (GB)";
             // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.Location = new System.Drawing.Point(6, 192);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(38, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(67, 19);
             this.metroLabel6.TabIndex = 30;
-            this.metroLabel6.Text = "RAM";
+            this.metroLabel6.Text = "RAM (GB)";
             // 
             // metroLabel7
             // 
@@ -500,15 +395,6 @@
             this.tab2tbGPU.Name = "tab2tbGPU";
             this.tab2tbGPU.Size = new System.Drawing.Size(210, 20);
             this.tab2tbGPU.TabIndex = 26;
-            // 
-            // tab2tbRAM
-            // 
-            this.tab2tbRAM.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tab2tbRAM.Location = new System.Drawing.Point(6, 215);
-            this.tab2tbRAM.Name = "tab2tbRAM";
-            this.tab2tbRAM.Size = new System.Drawing.Size(210, 20);
-            this.tab2tbRAM.TabIndex = 25;
             // 
             // metroLabel8
             // 
@@ -564,6 +450,120 @@
             this.metroLabel15.TabIndex = 19;
             this.metroLabel15.Text = "ID";
             // 
+            // tab2btModificar
+            // 
+            this.tab2btModificar.ActiveControl = null;
+            this.tab2btModificar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tab2btModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tab2btModificar.Location = new System.Drawing.Point(6, 333);
+            this.tab2btModificar.Name = "tab2btModificar";
+            this.tab2btModificar.Size = new System.Drawing.Size(210, 30);
+            this.tab2btModificar.Style = MetroFramework.MetroColorStyle.Green;
+            this.tab2btModificar.TabIndex = 11;
+            this.tab2btModificar.Text = "Modificar";
+            this.tab2btModificar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tab2btModificar.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.tab2btModificar.UseSelectable = true;
+            // 
+            // panel3Eliminar
+            // 
+            this.panel3Eliminar.Controls.Add(this.tab3btEliminar);
+            this.panel3Eliminar.Controls.Add(this.tab3tbID);
+            this.panel3Eliminar.Controls.Add(this.metroLabel9);
+            this.panel3Eliminar.HorizontalScrollbarBarColor = true;
+            this.panel3Eliminar.HorizontalScrollbarHighlightOnWheel = false;
+            this.panel3Eliminar.HorizontalScrollbarSize = 10;
+            this.panel3Eliminar.Location = new System.Drawing.Point(4, 38);
+            this.panel3Eliminar.Name = "panel3Eliminar";
+            this.panel3Eliminar.Size = new System.Drawing.Size(219, 457);
+            this.panel3Eliminar.TabIndex = 2;
+            this.panel3Eliminar.Text = "Eliminar";
+            this.panel3Eliminar.VerticalScrollbarBarColor = true;
+            this.panel3Eliminar.VerticalScrollbarHighlightOnWheel = false;
+            this.panel3Eliminar.VerticalScrollbarSize = 10;
+            // 
+            // tab3btEliminar
+            // 
+            this.tab3btEliminar.ActiveControl = null;
+            this.tab3btEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tab3btEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tab3btEliminar.Location = new System.Drawing.Point(9, 52);
+            this.tab3btEliminar.Name = "tab3btEliminar";
+            this.tab3btEliminar.Size = new System.Drawing.Size(210, 30);
+            this.tab3btEliminar.Style = MetroFramework.MetroColorStyle.Red;
+            this.tab3btEliminar.TabIndex = 13;
+            this.tab3btEliminar.Text = "Eliminar";
+            this.tab3btEliminar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tab3btEliminar.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.tab3btEliminar.UseSelectable = true;
+            // 
+            // tab3tbID
+            // 
+            this.tab3tbID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tab3tbID.Location = new System.Drawing.Point(6, 26);
+            this.tab3tbID.Name = "tab3tbID";
+            this.tab3tbID.Size = new System.Drawing.Size(210, 20);
+            this.tab3tbID.TabIndex = 12;
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(6, 4);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel9.TabIndex = 2;
+            this.metroLabel9.Text = "ID";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(578, 56);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Máquina";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tab1cbHDD
+            // 
+            this.tab1cbHDD.FormattingEnabled = true;
+            this.tab1cbHDD.Location = new System.Drawing.Point(6, 309);
+            this.tab1cbHDD.Name = "tab1cbHDD";
+            this.tab1cbHDD.Size = new System.Drawing.Size(210, 21);
+            this.tab1cbHDD.TabIndex = 19;
+            // 
+            // tab1cbRAM
+            // 
+            this.tab1cbRAM.FormattingEnabled = true;
+            this.tab1cbRAM.Location = new System.Drawing.Point(6, 215);
+            this.tab1cbRAM.Name = "tab1cbRAM";
+            this.tab1cbRAM.Size = new System.Drawing.Size(210, 21);
+            this.tab1cbRAM.TabIndex = 20;
+            // 
+            // tab2cbRAM
+            // 
+            this.tab2cbRAM.FormattingEnabled = true;
+            this.tab2cbRAM.Location = new System.Drawing.Point(6, 215);
+            this.tab2cbRAM.Name = "tab2cbRAM";
+            this.tab2cbRAM.Size = new System.Drawing.Size(210, 21);
+            this.tab2cbRAM.TabIndex = 33;
+            // 
+            // tab2cbHDD
+            // 
+            this.tab2cbHDD.FormattingEnabled = true;
+            this.tab2cbHDD.Location = new System.Drawing.Point(6, 309);
+            this.tab2cbHDD.Name = "tab2cbHDD";
+            this.tab2cbHDD.Size = new System.Drawing.Size(210, 21);
+            this.tab2cbHDD.TabIndex = 34;
+            // 
             // FMaquina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,7 +590,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private MetroFramework.Controls.MetroGrid Grid;
         private MetroFramework.Controls.MetroTabControl TabControl;
         private MetroFramework.Controls.MetroTabPage panel1Agregar;
         private MetroFramework.Controls.MetroTile tab1btAgregar;
@@ -603,31 +602,32 @@
         private MetroFramework.Controls.MetroTabPage panel2Modificar;
         private MetroFramework.Controls.MetroTile tab2btModificar;
         private MetroFramework.Controls.MetroTabPage panel3Eliminar;
-        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile tab3btEliminar;
         private System.Windows.Forms.TextBox tab3tbID;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tab1tbModelo;
         private System.Windows.Forms.TextBox tab1tbCPU;
         private System.Windows.Forms.TextBox tab1tbGPU;
-        private System.Windows.Forms.TextBox tab1tbRAM;
         private MetroFramework.Controls.MetroLabel metroLabel12;
-        private System.Windows.Forms.TextBox tab1tbHDD;
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private System.Windows.Forms.TextBox tab2tbHDD;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private System.Windows.Forms.TextBox tab2tbModelo;
         private System.Windows.Forms.TextBox tab2tbCPU;
         private System.Windows.Forms.TextBox tab2tbGPU;
-        private System.Windows.Forms.TextBox tab2tbRAM;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private System.Windows.Forms.TextBox tab2tbFabricante;
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private System.Windows.Forms.TextBox tab2tbID;
         private MetroFramework.Controls.MetroLabel metroLabel15;
+        private MetroFramework.Controls.MetroGrid Grid;
+        private System.Windows.Forms.ComboBox tab1cbRAM;
+        private System.Windows.Forms.ComboBox tab1cbHDD;
+        private System.Windows.Forms.ComboBox tab2cbHDD;
+        private System.Windows.Forms.ComboBox tab2cbRAM;
     }
 }
